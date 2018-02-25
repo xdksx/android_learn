@@ -1,0 +1,48 @@
+1、布局文件.xml简介：
+在android开发中，.xml为格式的文件有资源文件，布局文件和清单文件
+.xml文件本质上是一种传输和存储数据的，可以把它理解成一个数据载体，如SQLite底层也是一个xml文件，它的描述和html很像，更具体的可以到w3school看
+
+2、android xml语法和特点：
+eg:
+<?xml version="1.0" encoding="utf-8"?>
+简单如<类型 属性=　>
+        <儿子类型 属性= >
+		 ...
+	
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+
+	<Button
+	   android:id="@+id/button_1"
+	   android:layout_width="match_parent"
+	   android:layout_height="wrap_content"
+	   android:text="Button 1"/>
+</LinearLayout>
+普世xml：
+xmlns:xml命名空间，用于应对名字相同的冲突，如定义了两个xml都包含了<table>,则xml本身无法区分；在html中也存在这个属性，而其命名空间往往指向某个网址
+来看描述：
+　　html:xmlns 属性可以在文档中定义一个或多个可供选择的命名空间。该属性可以放置在文档内任何元素的开始标签中。该属性的值类似于 URL，它定义了一个命名空间，浏览器会将此命名空间用于该属性所在元素内的所有内容
+<html xmlns="http://www.w3.org/1999/xhtml">
+语法：XML 命名空间定义语法为xmlns:namespace-prefix="namespaceURI"
+xmlns：声明命名空间的保留字，其实就是XML中元素的一个属性；
+namespace-prefix：命名空间的前缀，这个前缀与某个命名空间相关联；
+namespaceURI：命名空间的唯一标识符，一般就是一个URI引用。
+关于xml命名空间见:http://www.w3school.com.cn/xml/xml_namespaces.asp
+
+安卓中的xml:
+对第一行声明版本和字符编码
+第二开始写选择的布局（此外还可以通过继承等自定义布局），然后xmlns命名空间
+不过这里不明白的是为什么都是用schemas.android.com这个地址，而tools是用于在开发中查看如何显示，但是在实际运行中并不显示出来的
+more:http://tools.android.com/tech-docs/tools-attributes
+
+3、.xml文件和activity的联系
+
+4、.xml文件和其他资源文件
+5、一个例子:
+可以从安卓源码的package中找到一些app，并去查看整个工程文件，打开其中的res文件夹，里面很多.xml文件，打开一个解析：
+6、如何解析一个xml文件:
+类似于dom，html文件那样去解析，有几种方式，跟之前毕设做的类似
+7、新建xml
+1)menu:为了节省面积
+在res中新建menu文件夹，并在里面建立xml文件，注意资源文件都是xml格式的，所以在menu中新建的文件是menu resource file

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux下JNI的使用 - __Shadow - 博客园</title>
+<link type="text/css" rel="stylesheet" href="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-coffee.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-coffee-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bastard/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bastard/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bastard/wlwmanifest.xml">
+<script async="" src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/analytics.js"></script><script type="text/javascript" src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js"></script><script src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'bastard', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bastard/"><img id="blogLogo" src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bastard/">Dufresne</a></h1>
+<h2>改变从现在开始！</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/bastard/">首页</a></li>
+	<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li><a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/__Shadow">联系</a></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/bastard/rss">订阅</a>
+	<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/bastard/rss"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats">
+<!--done-->
+随笔- 127&nbsp;
+文章- 0&nbsp;
+评论- 100&nbsp;
+</div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/bastard/archive/2012/05/17/2506877.html">Linux下JNI的使用</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><span style="font-size: 18pt;">&nbsp;Linux下 JNI的使用</span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 学习Android其中涉及对JNI的使用，对于这种跨语言的调用真没有见过，</span></p>
+<p><span style="font-size: 14pt;">Java也都是最近才学的更别说对JNI的了解了，</span></p>
+<p><span style="font-size: 14pt;">JNI的使用对于Android来说又是十分的重要和关键。那么到底Java到底是如何调用C/C++的，</span></p>
+<p><span style="font-size: 14pt;">通过网络达人的总结中学习，自己也顺便总结一下这个学习的过程。</span></p>
+<p><span style="font-size: 14pt;"><strong>什么是</strong><strong>JNI</strong></span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp; JNI是Java native interface的简写，可以译作Java原生接口。</span></p>
+<p><span style="font-size: 14pt;">Java可以通过JNI调用C/C++的库，这对于那些对性能要求比较高的Java程序无疑是一个福音。</span></p>
+<p><span style="font-size: 14pt;">JNI是Java与C/C++交互的接口。</span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 使用JNI也是有代价。大家都知道JAVA程序是运行在JVM之上的，可以做到平台无关。</span></p>
+<p><span style="font-size: 14pt;">但是如果Java程序通过JNI调用了原生的代码（比如c/c++等），则Java程序就丧失了平台无关性。</span></p>
+<p><span style="font-size: 14pt;">最起码需要重新编译原生代码部分。所以应用JNI需要好好权衡，不到万不得已，请不要选择JNI，</span></p>
+<p><span style="font-size: 14pt;">可以选择替代方案，比如TCP/IP进行进程间通讯等等。这也是为什么谷歌的Android平台的底层虽然用JNI实现，</span></p>
+<p><span style="font-size: 14pt;">但是他不建议开发人员用JNI来开发Android上面的应用的原因。将会丧失Android上面的应用程序平台无关性。</span></p>
+<p><span style="font-size: 14pt;">代码实例</span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 下面以HelloWorld的实现学习Linux下 JNI的使用。</span></p>
+<p><span style="font-size: 14pt;"><strong>第一步：</strong></span></p>
+<p><span style="font-size: 14pt;">创建一个 TestJni.java文件</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="font-size: 14px;"><span style="color: #0000ff;">import</span> java.util.*<span style="color: #000000;">;
+</span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> TestJni
+{
+      </span><span style="color: #008000;">//</span><span style="color: #008000;">声明原生函数：参数为String类型</span>
+      <span style="color: #0000ff;">public</span> <span style="color: #0000ff;">native</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> print(String content);
+      </span><span style="color: #008000;">//</span><span style="color: #008000;">加载本地库代码     </span>
+      <span style="color: #0000ff;">static</span><span style="color: #000000;">
+      {
+           System.loadLibrary(</span>"TestJni"<span style="color: #000000;">);
+      }
+}</span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><span style="font-size: 19px; line-height: 27px;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">编译 TestJni.java文件：javac TestJni.java</span></p>
+<p><span style="font-size: 14pt;">在当前文件夹下生成TestJni.class文件</span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意print方法的声明，关键字native表明该方法是一个原生代码实现的。</span></p>
+<p><span style="font-size: 14pt;">另外注意static代码段的System.loadLibrary调用，这段代码表示在程序加载的时候，自动加载libTestJni.so库。</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;"><strong>第二步：</strong></span></p>
+<p><span style="font-size: 14pt;">生成 TestJni.h文件</span></p>
+<p><strong><span style="font-size: 14pt;">执行命令：javah -jni TestJni</span></strong></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 生成TestJni.h文件</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="font-size: 14px;"><span style="color: #008000;">/*</span><span style="color: #008000;"> DO NOT EDIT THIS FILE - it is machine generated </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+#include </span>&lt;jni.h&gt;
+<span style="color: #008000;">/*</span><span style="color: #008000;"> Header for class TestJni </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+
+#ifndef _Included_TestJni
+
+</span><span style="color: #0000ff;">#define</span> _Included_TestJni<span style="color: #000000;">
+#ifdef __cplusplus
+</span><span style="color: #0000ff;">extern</span> <span style="color: #800000;">"</span><span style="color: #800000;">C</span><span style="color: #800000;">"</span><span style="color: #000000;"> {
+</span><span style="color: #0000ff;">#endif</span>
+<span style="color: #008000;">/*</span><span style="color: #008000;">
+ * Class:     TestJni
+ * Method:    print
+ * Signature: (Ljava/lang/String;)V
+ </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+JNIEXPORT </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> JNICALL Java_TestJni_print
+  (JNIEnv </span>*<span style="color: #000000;">, jobject, jstring);
+
+#ifdef __cplusplus
+}
+</span><span style="color: #0000ff;">#endif</span>
+<span style="color: #0000ff;">#endif</span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><span style="font-size: 14pt;">该文件中包含了一个函数Java_TestJni_print的声明。这里面自动包含两个参数，非常重要。JNIEnv *和 jobject</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;"><strong>第三步：</strong></span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建TestJni.c文件</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="font-size: 14px;">#include &lt;jni.h&gt;<span style="color: #000000;">
+#include </span>&lt;stdio.h&gt;<span style="color: #000000;">
+#include </span>&lt;TestJni.h&gt;<span style="color: #000000;">
+
+JNIEXPORT </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> JNICALL
+      Java_TestJni_print(JNIEnv </span>*<span style="color: #000000;">env,jobject obj, jstring content)
+{
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> 从 instring 字符串取得指向字符串 UTF 编码的指针
+      </span><span style="color: #008000;">//</span><span style="color: #008000;">注意C语言必须(*env)-&gt;         C++ env-&gt;</span>
+      <span style="color: #0000ff;">const</span> jbyte *str =<span style="color: #000000;">
+           (</span><span style="color: #0000ff;">const</span> jbyte *)(*env)-&gt;<span style="color: #000000;">GetStringUTFChars(env,content, JNI_FALSE);
+    　　printf(</span><span style="color: #800000;">"</span><span style="color: #800000;">Hello----&gt;%s\n</span><span style="color: #800000;">"</span><span style="color: #000000;">,str);<br>
+      </span><span style="color: #008000;">//</span><span style="color: #008000;"> 通知虚拟机本地代码不再需要通过 str 访问 Java 字符串。</span><span style="color: #000000;">
+    (</span>*env)-&gt;ReleaseStringUTFChars(env, content, (<span style="color: #0000ff;">const</span> <span style="color: #0000ff;">char</span> *<span style="color: #000000;">)str );
+
+    </span><span style="color: #0000ff;">return</span><span style="color: #000000;">;
+}</span></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><span style="font-size: 14pt;">//这里看到&nbsp; <strong>JNIEnv</strong>作用了，使得我们可以使用Java的方法</span></p>
+<p><span style="font-size: 14pt;">//jobject 指向在此 Java 代码中实例化的 Java 对象 LocalFunction 的一个句柄，相当于 this 指针</span></p>
+<p><span style="font-size: 14pt;">参数类型 jstring 对应java中的String，这里是有所不同的。每一个Java里的类型这里有对应的与之匹配。</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><strong><span style="font-size: 14pt;">命令行输入：</span></strong></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>cc -I/usr/lib/jvm/java-6-sun/include/linux/ </strong></span></p>
+<p><strong><span style="font-size: 14pt;">　　-I/usr/lib/jvm/java-6-sun/include/ </span></strong></p>
+<p><strong><span style="font-size: 14pt;">　　-I/home/xmp/AndroidProject/apk/JNI&nbsp; </span></strong></p>
+<p><strong><span style="font-size: 14pt;">　　-fPIC -shared -o libTestJni.so TestJni.c</span></strong></p>
+<p><span style="font-size: 14pt;">生成：libTestJni.so库文件</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">　　在当前目录生成libTestJni.so。注意一定需要包含Java的include目录（请根据自己系统环境设定），</span></p>
+<p><span style="font-size: 14pt;">因为libTestJni.c中包含了jni.h。</span><span style="font-size: 14pt;">另外一个值得注意的是在libTestJni.java中我们LoadLibrary方法加载的是“TestJni”，</span></p>
+<p><span style="font-size: 14pt;">可我们生成的Library却是libTestJni。</span><span style="font-size: 14pt;">这是Linux的链接规定的，</span></p>
+<p><span style="font-size: 14pt;">一个库的必须要是：lib+库名+.so。链接的时候只需要提供库名就可以了</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">　　-I/home/xmp/AndroidProject/apk/JNI 是我自己的练习目录也必须包含，否则.c文件中会找不到TestJni.h头文件。</span></p>
+<p><span style="font-size: 14pt;">　　现在 liblibTestJni.so就是一个可以使用的库了，其功能就是有一个print函数 与刚才所创建的TestJni.java文件对应，</span></p>
+<p><span style="font-size: 14pt;">TestJni.java类中加载库liblibTestJni.so，声明了其函数print。所以现在TestJni.java中具备使用print函数的功能；</span></p>
+<p><span style="font-size: 14pt;">所以现在我们就可以通过使用TestJni.java来使用调用C库libTestJni.so中的函数</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">当然现在任何java类都可已加载liblibTestJni.so库来使用其中的功能。</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;"><strong>第四步：</strong></span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp; 创建HelloWord.java函数</span></p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="font-size: 14px;"><span style="color: #0000ff;">import</span> java.util.*<span style="color: #000000;">;
+</span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> HelloWorld
+{
+     </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> main(String argv[])
+     {
+         </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> HelloWorld();
+     }
+
+     </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> HelloWorld()
+     {
+         </span><span style="color: #0000ff;">new</span> TestJni().print("Hello,World !"); <span style="color: #008000;">//</span><span style="color: #008000;">调用TestJni的原生函数print</span></span><span style="color: #000000;"><span style="font-size: 14px;">
+     }
+}</span><br></span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p><strong><span style="font-size: 14pt;">输入命令编译： javac HelloWorld.java</span></strong></p>
+<p><span style="font-size: 14pt;">生成HelloWorld.class</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;"><strong>第五步：</strong></span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 运行HelloWorld程序</span></p>
+<p><strong><span style="font-size: 14pt;">命令行输入：java HelloWorld</span></strong></p>
+<p><span style="font-size: 14pt;">输出结果：Hello----&gt;Hello,World !</span></p>
+<p><span style="font-size: 14pt;">验证OK！</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">如果你这步发生问题，如果这步你收到java.lang.UnsatisfiedLinkError异常，可以通过如下方式指明共享库的路径：</span></p>
+<p><span style="font-size: 14pt;"><strong>java -Djava.library.path='.' HelloWorld</strong></span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">或者输入命令：</span></p>
+<p><span style="font-size: 14pt;"><strong>export LD_LIBRARY_PATH=“</strong><strong>HelloWorld</strong><strong>路径</strong><strong>”:$LD_LIBRARY_PATH &nbsp;&nbsp;</strong><strong>设置</strong>环境变量</span></p>
+<p><span style="font-size: 14pt;">然后再 java HelloWorld 一样OK</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">简单例子，照着以下参考文档即可实现。</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p>
+<p><span style="font-size: 14pt;">参考文档：</span></p>
+<p><span style="font-size: 14pt;"><a href="http://my.unix-center.net/~Simon_fu/?p=359">http://my.unix-center.net/~Simon_fu/?p=359</a></span></p>
+<p><span style="font-size: 14pt;"><a href="http://www.ibm.com/developerworks/cn/java/l-linux-jni/">http://www.ibm.com/developerworks/cn/java/l-linux-jni/</a></span></p>
+<p><span style="font-size: 14pt;">JNIEnv功能参考：</span></p>
+<p><span style="font-size: 14pt;"><a href="http://docs.oracle.com/javase/1.5.0/docs/guide/jni/spec/functions.html">http://docs.oracle.com/javase/1.5.0/docs/guide/jni/spec/functions.html</a></span></p>
+<p><span style="font-size: 14pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+<p><span style="font-size: 14pt;">&nbsp;</span></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/bastard/category/368660.html" target="_blank">Android</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bastard/tag/Java%20Jni/">Java Jni</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(2506877,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('ac88c115-49d4-e011-8ee0-842b2b196315');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bastard/" target="_blank"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u328668.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/bastard/">__Shadow</a><br>
+            <a href="http://home.cnblogs.com/u/bastard/followees">关注 - 13</a><br>
+            <a href="http://home.cnblogs.com/u/bastard/followers">粉丝 - 403</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('ac88c115-49d4-e011-8ee0-842b2b196315');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(2506877,'Digg')">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit" onclick="votePost(2506877,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bastard/archive/2012/05/14/2499939.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/bastard/archive/2012/05/14/2499939.html" title="发布于2012-05-14 20:30">可以工作的类——代码大全学习笔记4</a><br><a href="http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html" title="发布于2012-05-19 15:24">Android中JNI的使用方法</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2012-05-17 21:55</span> <a href="http://www.cnblogs.com/bastard/">__Shadow</a> 阅读(<span id="post_view_count">17214</span>) 评论(<span id="post_comment_count">2</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=2506877" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2506877);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=101485,cb_entryId=2506877,cb_blogApp=currentBlogApp,cb_blogUserGuid='ac88c115-49d4-e011-8ee0-842b2b196315',cb_entryCreatedDate='2012/5/17 21:55:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2619193" class="layer">#1楼</a><a name="2619193" id="comment_anchor_2619193"></a> <span class="comment_date">2013-02-20 00:16</span> | <a id="a_comment_author_2619193" href="http://home.cnblogs.com/u/496473/" target="_blank">koyt</a> <a href="http://msg.cnblogs.com/send/koyt" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2619193" class="blog_comment_body">-I/home/xmp/AndroidProject/apk/JNI 你现在创建java C文件的位置<br>很好，说的很详细</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2619193,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2619193,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="#2816381" class="layer">#2楼</a><a name="2816381" id="comment_anchor_2816381"></a><span id="comment-maxId" style="display:none;">2816381</span><span id="comment-maxDate" style="display:none;">2013/11/14 12:20:12</span> <span class="comment_date">2013-11-14 12:20</span> | <a id="a_comment_author_2816381" href="http://www.cnblogs.com/woodylee/" target="_blank">西楚官人</a> <a href="http://msg.cnblogs.com/send/%E8%A5%BF%E6%A5%9A%E5%AE%98%E4%BA%BA" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2816381" class="blog_comment_body">楼主写的真好，谢谢分享</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2816381,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2816381,'Bury',this)">反对(0)</a></div><span id="comment_2816381_avatar" style="display:none;">http://pic.cnblogs.com/face/u441555.jpg?id=27133805</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://click.aliyun.com/m/33696/" target="_blank">【调查】有奖调研即刻参与，你竟然是酱紫程序猿！</a><br><a href="http://xc.hubwiz.com/course/592ee9b2b343f27b0ae1ba99?affid=cnblogs" target="_blank">【推荐】Vue.js 2.x 快速入门，大量高效实战示例</a><br><a href="https://cloud.tencent.com/act/free?fromSource=gwzcw.562633.562633.562633" target="_blank">【推荐】腾讯云 普惠云计算 0门槛体验</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/spreadjs/?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20171031213013029-1265843211.jpg" alt="葡萄城1101" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/582379/" target="_blank">吊打战狼，单挑叶问，演员马云的电影首秀能打几分？</a><br> ·  <a href="http://news.cnblogs.com/n/582384/" target="_blank">如何像NASA顶级程序员一样编程 10条重要原则</a><br> ·  <a href="http://news.cnblogs.com/n/582383/" target="_blank">天猫双11全纪录：24小时1682亿元是怎么炼成的？</a><br> ·  <a href="http://news.cnblogs.com/n/582376/" target="_blank">双11这天刘强东畅想了未来：AI完全可以替代蓝领工作</a><br> ·  <a href="http://news.cnblogs.com/n/582380/" target="_blank">9图读懂：这个双11你们是如何花光1682亿的！</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/32986/" target="_blank"><img src="Linux%E4%B8%8BJNI%E7%9A%84%E4%BD%BF%E7%94%A8%20-%20__Shadow%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20171027070203758-1397753435.jpg" alt="阿里云双11" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/563790/" target="_blank">关于编程，你的练习是不是有效的？</a><br> ·  <a href="http://kb.cnblogs.com/page/581467/" target="_blank">改善程序员生活质量的 3+10 习惯</a><br> ·  <a href="http://kb.cnblogs.com/page/568841/" target="_blank">NASA的10条代码编写原则</a><br> ·  <a href="http://kb.cnblogs.com/page/578502/" target="_blank">为什么你参加了那么多培训，却依然表现平平？</a><br> ·  <a href="http://kb.cnblogs.com/page/579832/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bastard/">__Shadow</a><br>园龄：<a href="http://home.cnblogs.com/u/bastard/" title="入园时间：2011-09-01">6年2个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bastard/followers/">403</a><br>关注：<a href="http://home.cnblogs.com/u/bastard/followees/">13</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('ac88c115-49d4-e011-8ee0-842b2b196315')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/04/01');return false;">&lt;</a></td><td align="center">2012年5月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2012/06/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td align="center">1</td><td align="center">2</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/03.html"><u>3</u></a></td><td align="center">4</td><td class="CalWeekendDay" align="center">5</td></tr><tr><td class="CalWeekendDay" align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/09.html"><u>9</u></a></td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/10.html"><u>10</u></a></td><td align="center">11</td><td class="CalWeekendDay" align="center">12</td></tr><tr><td class="CalWeekendDay" align="center">13</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/14.html"><u>14</u></a></td><td align="center">15</td><td align="center">16</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/17.html"><u>17</u></a></td><td align="center">18</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/19.html"><u>19</u></a></td></tr><tr><td class="CalWeekendDay" align="center">20</td><td align="center">21</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/22.html"><u>22</u></a></td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/23.html"><u>23</u></a></td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/24.html"><u>24</u></a></td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/25.html"><u>25</u></a></td><td class="CalWeekendDay" align="center">26</td></tr><tr><td class="CalWeekendDay" align="center">27</td><td align="center">28</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/29.html"><u>29</u></a></td><td align="center">30</td><td align="center"><a href="http://www.cnblogs.com/bastard/archive/2012/05/31.html"><u>31</u></a></td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bastard/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/bastard/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/bastard/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/bastard/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/bastard/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bastard/p/5770573.html">1. 开机SystemServer到ActivityManagerService启动过程分析</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/16/3082309.html">2. windows中如何在命令行启动启动程序</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/09/3068602.html">3. PLMN概念和应用设置</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/07/3065328.html">4. UICC 实现框架和数据读写</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/03/3056985.html">5. Android调试获取Log</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/03/3056182.html">6. 通过system调用Am命令执行动作</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/02/3055043.html">7. 通过Socket直接与RILD进行通信</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/04/20/3031973.html">8. Telephony数据连接.管理——DataConnection</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/04/20/3031964.html">9. Telephony状态维护—ServiceStateTracker</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/04/10/3011959.html">10. Android相关权限的概念</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bastard/tag/Android/">Android</a>(9)</li><li><a href="http://www.cnblogs.com/bastard/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(7)</li><li><a href="http://www.cnblogs.com/bastard/tag/Android%20Ril/">Android Ril</a>(4)</li><li><a href="http://www.cnblogs.com/bastard/tag/Android%20Framework%20RIL/">Android Framework RIL</a>(3)</li><li><a href="http://www.cnblogs.com/bastard/tag/Adapter/">Adapter</a>(2)</li><li><a href="http://www.cnblogs.com/bastard/tag/Telephony/">Telephony</a>(2)</li><li><a href="http://www.cnblogs.com/bastard/tag/%E7%AE%97%E6%B3%95%20%E6%8E%92%E5%BA%8F/">算法 排序</a>(2)</li><li><a href="http://www.cnblogs.com/bastard/tag/SIM/">SIM</a>(2)</li><li><a href="http://www.cnblogs.com/bastard/tag/Singleton/">Singleton</a>(1)</li><li><a href="http://www.cnblogs.com/bastard/tag/SMS%20PDU%E7%BC%96%E7%A0%81/">SMS PDU编码</a>(1)</li><li><a href="http://www.cnblogs.com/bastard/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bastard/category/368660.html">Android(34)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bastard/category/392117.html">Android FrameWork(27)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bastard/category/391334.html">Android 控件(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bastard/category/337856.html">C/C++(12)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bastard/category/382982.html">Java学习(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bastard/category/409879.html">Linux(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bastard/category/412387.html">Linux内核学习笔记(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/bastard/category/476794.html">Log &amp; Debug(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/bastard/category/419012.html">Reserved form others(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/bastard/category/433182.html">Socket(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/bastard/category/445342.html">Telephony &amp; RIL(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/bastard/category/377131.html">代码大全学习笔记(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/bastard/category/405983.html">内存管理(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/bastard/category/339371.html">软件方法(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/bastard/category/335807.html">设计模式(22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/bastard/category/336219.html">深思总结(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/bastard/category/410127.html">实用工具方法(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/bastard/category/421256.html">数据结构与算法(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/bastard/category/352641.html">通讯协议(7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/bastard/category/359201.html">系统(4)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/bastard/archive/2016/08.html">2016年8月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/bastard/archive/2013/05.html">2013年5月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/bastard/archive/2013/04.html">2013年4月 (4)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/bastard/archive/2013/03.html">2013年3月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/bastard/archive/2013/02.html">2013年2月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/bastard/archive/2013/01.html">2013年1月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/bastard/archive/2012/12.html">2012年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/bastard/archive/2012/11.html">2012年11月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/bastard/archive/2012/10.html">2012年10月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/bastard/archive/2012/09.html">2012年9月 (16)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/bastard/archive/2012/08.html">2012年8月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/bastard/archive/2012/07.html">2012年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/bastard/archive/2012/06.html">2012年6月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/bastard/archive/2012/05.html">2012年5月 (13)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/bastard/archive/2012/04.html">2012年4月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/bastard/archive/2012/03.html">2012年3月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/bastard/archive/2012/02.html">2012年2月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/bastard/archive/2012/01.html">2012年1月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/bastard/archive/2011/12.html">2011年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/bastard/archive/2011/11.html">2011年11月 (9)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	273605
+	</li><li class="liRank">
+		排名 -	649
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bastard/archive/2013/02/22/2922460.html#3808836">1. Re:不同网络下紧急拨号的处理</a></li>
+        <li class="recent_comment_body">关于楼主的如下疑问，使用GSM卡，拨打112时提示各种紧急号码作用……使用CMDA卡，拨打112时提示拨打的号码是空号？？G网下，是有一个寻呼台的，拨打112会接入，然后用户就能听到里面的提示音。但是......</li>
+        <li class="recent_comment_author">--xxvxxws</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bastard/archive/2013/02/22/2922460.html#3808827">2. Re:不同网络下紧急拨号的处理</a></li>
+        <li class="recent_comment_body">@snowchiA和B通话中，是可以添加一路紧急通话的，但是添加后，A和B的通话是应该挂断还是应该保留，3GPP协议并没有规定。可能存在A和B通话无法保留的情况，所以紧急号码就无法呼出，但是拨打紧急号......</li>
+        <li class="recent_comment_author">--xxvxxws</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bastard/archive/2012/03/31/2427613.html#3775882">3. Re:adb常用命令和logcat使用</a></li>
+        <li class="recent_comment_body">使用管道输出+grep过滤真是好方法！</li>
+        <li class="recent_comment_author">--友人L</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bastard/archive/2012/02/02/2336150.html#3764471">4. Re:Decorator模式——设计模式学习笔记</a></li>
+        <li class="recent_comment_body">蒙逼...我太笨了</li>
+        <li class="recent_comment_author">--小梁丶</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/bastard/archive/2012/11/22/2783229.html#3739764">5. Re:Framework层Ril控制流程分析</a></li>
+        <li class="recent_comment_body">学习了 通俗易懂</li>
+        <li class="recent_comment_author">--耀匀</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/31/2664896.html">1. Linux中fork（）函数详解(169689)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html">2. Android中JNI的使用方法(151632)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/10/11/2720314.html">3. Android 系统属性SystemProperty分析(78894)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/28/2660389.html">4. Android系统启动过程(66933)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/03/31/2427613.html">5. adb常用命令和logcat使用(45773)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/31/2664896.html">1. Linux中fork（）函数详解(12)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/28/2660389.html">2. Android系统启动过程(11)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html">3. Android中JNI的使用方法(11)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/04/07/2436262.html">4. Android学习笔记——Activity的启动和创建(9)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2013/05/02/3055043.html">5. 通过Socket直接与RILD进行通信(4)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/31/2664896.html">1. Linux中fork（）函数详解(27)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/08/28/2660389.html">2. Android系统启动过程(11)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/05/19/2508913.html">3. Android中JNI的使用方法(9)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/04/07/2436262.html">4. Android学习笔记——Activity的启动和创建(8)</a></li><li><a href="http://www.cnblogs.com/bastard/archive/2012/10/11/2720314.html">5. Android 系统属性SystemProperty分析(7)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 __Shadow
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

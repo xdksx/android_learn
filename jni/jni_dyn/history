@@ -1,0 +1,1000 @@
+  870  sudo's  pip install Pillow
+  871  -H
+  872  sudo pip install Pillow
+  873  pip install --use-wheel Pillow
+  874  sudo pip install --use-wheel Pillow
+  875  sudo chown root /home/ksx/.cache/pip
+  876  sudo pip install --use-wheel Pillow
+  877  sudo pip install Pillow
+  878  exit
+  879  sudo pip install Pillow
+  880  sudo's -H
+  881  is
+  882  sudo -H pip install Pillow
+  883  sudo -H pip install pillow
+  884  sudo apt-get build-dep python-imaging
+  885  sudo apt-get install python-imaging
+  886  sudo pip install -I --no-cache-dir -v Pillow
+  887  sudo -H pip install Pillow==2.9.0
+  888  apache2
+  889  apache
+  890  service apache
+  891  /etc/init.d/apache2 start
+  892  sudo apt-get install apache2
+  893  apt-get update
+  894  sudo apt-get update
+  895  sudo apt-get install apache2
+  896  service apache2 start
+  897  ifconfig
+  898  cd Documents/
+  899  ls
+  900  mv test.html /var/www
+  901  sudo mv test.html /var/www
+  902  cd /var
+  903  cd www
+  904  ls
+  905  mv test.html html/
+  906  sudo mv test.html html/
+  907  ping 10.10.0.214
+  908  service NetworkManager restart
+  909  ifconfig
+  910  service NetworkManager restart
+  911  shutdown
+  912  shutdown -t
+  913  sudo shutdown -t
+  914  cmake -v
+  915  cmake 
+  916  cd Downloads/
+  917  ls
+  918  mkdir radiowork
+  919  cd radiowork/
+  920  clear
+  921  git clone https://github.com/pinkavaj/rtl-sdr.git
+  922  service NetworkManager restart
+  923  git clone https://github.com/pinkavaj/rtl-sdr.git
+  924  env | grep -i proxy
+  925  git config --global --unset http.proxy
+  926  git clone https://github.com/pinkavaj/rtl-sdr.git
+  927  env | grep -i proxy
+  928  cd Downloads/
+  929  cd radiowork/
+  930  ls
+  931  git clone https://github.com/pinkavaj/rtl-sdr.git
+  932  ls
+  933  git clone https://github.com/pinkavaj/rtl-sdr.git
+  934  git
+  935  git clone https://github.com/pinkavaj/rtl-sdr.git
+  936  cd 
+  937  ls
+  938  cd Downloads/radiowork/
+  939  ls
+  940  jieya rtl-sdr-master.zip 
+  941  unzip rtl-sdr-master.zip 
+  942  ls
+  943  cd rtl-sdr-master/
+  944  ls
+  945  mkdir build 
+  946  cd build/
+  947  cmake ../
+  948  sudo cmake ../
+  949  cd ..
+  950  git init
+  951  ls
+  952  cd rtl-sdr-master/
+  953  cd build/
+  954  ls
+  955  cmake ../
+  956  ls
+  957  rm .
+  958  rm -f .
+  959  rm -rf .
+  960  rm -r .
+  961  ls
+  962  rm -d .
+  963  cmake ../
+  964  libusb1.0
+  965  cmake ../
+  966  make
+  967  sudo make install
+  968  sudo ldconfig
+  969  cd ..
+  970  cd du
+  971  cd ..
+  972  cd dump1090-master/
+  973  ;s
+  974  ls
+  975  make
+  976  cd /home/ksx/
+  977  cd Downloads/radiowork/dump1090-master/
+  978  ls
+  979  sudo ./dump1090 --interactive --net
+  980  cd ..
+  981  cd rtl-sdr-master/
+  982  ls
+  983  cd build/
+  984  sudo ldconfig
+  985  sudo ./dump1090 
+  986  cd 
+  987  cd ~/.gitconfig
+  988  cd .gitconfig]
+  989  cd .gitconfig
+  990  la
+  991  sudo vim .gitconfig
+  992  cd /
+  993  cdetc
+  994  cd etc
+  995  ls
+  996  sudo vim .gitconfig
+  997  cd /opt
+  998  ;s
+  999  ls
+ 1000  cd opt
+ 1001  ls
+ 1002  cd /opt
+ 1003  cd..
+ 1004  cd ..
+ 1005  \cd /..
+ 1006  cd ..
+ 1007  ls
+ 1008  cd 
+ 1009  cd Downloads/radiowork/
+ 1010  ls
+ 1011  jieya libusb-1.0.20.tar.bz2 
+ 1012  cd libusb-1.0.20/
+ 1013  ls
+ 1014  ./install-sh
+ 1015  ./configure 
+ 1016  sudo apt-get install libudev
+ 1017  sudo dpkg -s libudev-dev
+ 1018  apt-get install libudev-dev
+ 1019  sudo apt-get install libudev-dev
+ 1020  sudo dpkg --configure -a
+ 1021  ./configure 
+ 1022  apt-get install libudev-dev
+ 1023  sudo apt-get install libudev-dev
+ 1024  ./configure 
+ 1025  make
+ 1026  sudo make install
+ 1027  cd Downloads/radiowork/dump1090-master/
+ 1028  sudo ./dump1090 --interactive
+ 1029  cd Downloads/radiowork/dump1090-master/
+ 1030  sudo ./dump1090 --interactive
+ 1031  sudo rtl_test -t
+ 1032  rmmod dvd_usb_rtl28xxu
+ 1033  sudo rtl_test -t
+ 1034  rmmod dvd_usb_rtl28xxu rtl2832
+ 1035  sudo rtl_test -t
+ 1036  rmmod dvd_usb_rtl28xxu rtl2832
+ 1037  sudo rmmod dvd_usb_rtl28xxu rtl2832
+ 1038  rmmod dvd_usb_rtl28xxu rtl2832
+ 1039  sudo rtl_test -t
+ 1040  ls
+ 1041  rmmod dvd_usb_rtl28xxu rtl2832
+ 1042  sudo rmmod dvd_usb_rtl28xxu rtl2832
+ 1043  sudo rtl_test -t
+ 1044  sudo ./dump1090 --interactive
+ 1045  sudo ./dump1090 --interactive --net
+ 1046  sudo apt-get install librtlsdr-dev
+ 1047  apt-get install libusb-1.0-0-dev
+ 1048  sudo apt-get install libusb-1.0-0-dev
+ 1049  ./dump1090 --interactive --net
+ 1050  sudo ./dump1090 --interactive --net
+ 1051  sudo rmmod dvd_usb_rtl28xxu RTL2838UHIDIR
+ 1052  sudo rtl_test -t
+ 1053  sudo rmmod dvd_usb_rtl28xxu RTL2838UHIDIR
+ 1054  sudo ./dump1090 --interactive --net
+ 1055  sudo rmmod dvd_usb_rtl28xxu RTL2838UHIDIR
+ 1056  insmod RTL2832UHIDIR
+ 1057  insmod dvd_usb_rtl28xxu
+ 1058  lsmod
+ 1059  insmod dvd_usb_rtl28xxu
+ 1060  sudo ./dump1090 --interactive --net
+ 1061  sudo rmmod dvb_usb_rtl28xxu rtl2832
+ 1062  sudo ./dump1090 --interactive --net
+ 1063  sudo rmmod dvb_usb_rtl28xxu rtl2832
+ 1064  sudo ./dump1090 --interactive --net
+ 1065  service NetworkManager reatart
+ 1066  service NetworkManager restart
+ 1067  service NetworkManager start
+ 1068  cd /usr
+ 1069  cd local
+ 1070  ls
+ 1071  cd linrad/
+ 1072  ls
+ 1073  clina
+ 1074  ./clina
+ 1075  ./clinrad 
+ 1076  ./configure --with_x11
+ 1077  sudo ./configure --with_x11
+ 1078  ls
+ 1079  sudo ./configure --with_x11
+ 1080  ./configure --with_x11
+ 1081  sudo ./configure --with_x11
+ 1082  ./clinrad 
+ 1083  make
+ 1084  sudo ./configure --with_x11
+ 1085  sudo configure --with_x11
+ 1086  gcc -o configure configure.c 
+ 1087  sudo gcc -o configure configure.c 
+ 1088  sudo configure --with_x11
+ 1089  ls
+ 1090  sudo ./configure --with_x11
+ 1091  ./configure
+ 1092  sudo ./configure
+ 1093  make
+ 1094  sudo dpkg -r linrad
+ 1095  clinrad
+ 1096  ./configure --with_x11
+ 1097  sudo ./configure --with_x11
+ 1098  sudo ./configure.exe --with_x11
+ 1099  sudo service NetworkManagerrestart
+ 1100  sudo service NetworkManager restart
+ 1101  ping www.baidu.com
+ 1102  sudo service NetworkManager restart
+ 1103  ifconfig
+ 1104  linrad
+ 1105  sudo apt-get installlinrad
+ 1106  sudo apt-get install linrad
+ 1107  cd Downloads/radiowork/
+ 1108  ls
+ 1109  cd libftdi-0.18/
+ 1110  ls
+ 1111  ./configure
+ 1112  make
+ 1113  ./configure
+ 1114  sudo apt-get install libusb.1.0.0-dev 
+ 1115  ./configure
+ 1116  sudo ./configure
+ 1117  sudo apt-get install libusb.1.0.0 
+ 1118  sudo ./configure
+ 1119  You need a working libusb installation.
+ 1120  cd ..
+ 1121  cd 
+ 1122  cd Downloads/
+ 1123  cd radiowork/linrad-04.12/
+ 1124  ls
+ 1125  ./configure
+ 1126  sudo ./configure
+ 1127  ./configure
+ 1128  cd
+ 1129  cd Downloads/radiowork/
+ 1130  ls
+ 1131  dpkg -i Linrad_snapshot_x86_64.deb 
+ 1132  sudo dpkg -i Linrad_snapshot_x86_64.deb 
+ 1133  linrad
+ 1134  Linrad
+ 1135  sudo dpkg -i Linrad_snapshot_x86_64.deb 
+ 1136  Linrad
+ 1137  sudo dpkg -i Linrad_04.13_x86_64.deb 
+ 1138  clinrad
+ 1139  java
+ 1140  javac
+ 1141  esclips
+ 1142  dot
+ 1143  sudo apt install graphviz
+ 1144  ls
+ 1145  cd workspace
+ 1146  mkdir dot
+ 1147  cd dot
+ 1148  ls
+ 1149  vim demo.dot
+ 1150  dot demo.dot  -Tpng -o 1.png
+ 1151  ls
+ 1152  1.
+ 1153  dot help
+ 1154  dot --help
+ 1155  vim second.dot
+ 1156  dot second.dot  -Tpng -o 2.png
+ 1157  vim second.dot
+ 1158  dot second.dot  -Tpng -o 2.png
+ 1159  vim second.dot
+ 1160  dot second.dot  -Tpng -o 2.png
+ 1161  vim second.dot
+ 1162  dot second.dot  -Tpng -o 2.png
+ 1163  vim second.dot
+ 1164  dot second.dot  -Tpng -o 2.png
+ 1165  vim second.dot
+ 1166  dot second.dot  -Tpng -o 2.png
+ 1167  vim second.dot
+ 1168  dot second.dot  -Tpng -o 2.png
+ 1169  cd ..
+ 1170  ls
+ 1171  ls -l
+ 1172  ls
+ 1173  cd ..
+ 1174  cd /media
+ 1175  ls
+ 1176  cd ksx
+ 1177  ls
+ 1178  cd 恒歌-003/
+ 1179  cd
+ 1180  ls
+ 1181  cd /media
+ 1182  cd ksx
+ 1183  cd 恒歌-003/
+ 1184  ls
+ 1185  cd ..
+ 1186  ls
+ 1187  rename 恒歌-003/ storage
+ 1188  umount 恒歌-003/
+ 1189  mv 恒歌-003/ stores/
+ 1190  cd /
+ 1191  cd usr
+ 1192  ls
+ 1193  cd ..
+ 1194  ls
+ 1195  cd dev
+ 1196  ls
+ 1197  ls -l
+ 1198  cd 
+ 1199  cd workspace/
+ 1200  wget https://dl-ssl.google.com/dl/googlesource/git-repo/repo
+ 1201  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+ 1202  cd /
+ 1203  cd bin
+ 1204  sudo mkdir repo
+ 1205  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+ 1206  cd
+ 1207  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+ 1208  mkdir bin/repo
+ 1209  mkdir bin
+ 1210  cd bin
+ 1211  mkdir repo
+ 1212  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+ 1213  rmdir repo/
+ 1214  curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+ 1215  curl https://storage-googleapis.proxy.ustclug.org/git-repo-downloads/repo > ~/bin/repo
+ 1216  ls
+ 1217  rm repo 
+ 1218  cd ..
+ 1219  rm bin/
+ 1220  rm -r bin/
+ 1221  ls
+ 1222  cd Downloads/
+ 1223  ls
+ 1224  mv repo /usr/bin
+ 1225  sudo mv repo /usr/bin
+ 1226  sudo chmod a+x /usr/bin/repo 
+ 1227  repo
+ 1228  sudo vim /usr/bin/repo 
+ 1229  cd /media
+ 1230  cd storge/
+ 1231  mkdir android
+ 1232  ls
+ 1233  cd android/
+ 1234  repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-2.3.1_r1
+ 1235  sudo vim /usr/bin/repo 
+ 1236  repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-2.3.1_r1
+ 1237  sudo apt-get install p7zip
+ 1238  cd
+ 1239  cd /media
+ 1240  umount ksx/恒歌-003
+ 1241  mkdir storge 
+ 1242  sudo mkdir storge 
+ 1243  sudo mount /dev/sdc storge/
+ 1244  sudo mount /dev/sdc1 storge/
+ 1245  ls
+ 1246  cd storge/
+ 1247  ls
+ 1248  cd
+ 1249  cd /media
+ 1250  cd ksx/
+ 1251  sudo umount 恒歌-003/
+ 1252  cd ..
+ 1253  sudo mount /dev/sdc1 storge/
+ 1254  ls -l /dev/
+ 1255  sudo mount /dev/sdb1 storge/
+ 1256  cd storge/
+ 1257  ls
+ 1258  cd android/
+ 1259  ls
+ 1260  man 7z
+ 1261  7za x android-2.3.7_r1.7z -r -o./
+ 1262  7za x android-2.3.7_r1.7z  -o./
+ 1263  repo init -u android-2.3.7_r1/
+ 1264  ls
+ 1265  cd android-2.3.7_r1/
+ 1266  make
+ 1267  sudo add-apt-repository ppa:ferramroberto/java
+ 1268  make
+ 1269  sudo apt-get install flex bison gperf libsdl-dev libsd0-dev libwxgk2.6-dev build-essential  zip curl valgrind
+ 1270  sudo apt-get install flex bison gperf libsdl1.2-dev libsd0-dev libwxgk2.6-dev build-essential  zip curl valgrind
+ 1271  sudo apt-get install sun-java6-jre sun-java6-plugin
+ 1272  make
+ 1273  sudo apt-get install flex bison gperf 
+ 1274  make
+ 1275  sudo apt-get install libsdl1.2-dev libsd0-dev libwxgk2.6-dev 
+ 1276  sudo apt-get install libsdl1.2-dev 
+ 1277  sudo apt-get install  libsd0-dev libwxgk2.6-dev 
+ 1278  sudo apt-get install  libwxgk2.6-dev 
+ 1279  sudo apt-get install  libwxgtk2.6-dev 
+ 1280  sudo apt-get install  libsd0-dev libwxgtk2.6-dev 
+ 1281  sudo apt-get install  libesd0-dev libwxgtk2.6-dev 
+ 1282  sudo apt-get install  libesd0-dev  
+ 1283  sudo apt-get install  build-essential  zip curl valgrind
+ 1284  sudo apt-get install  libwxgtk2.6-dev 
+ 1285  make
+ 1286  java
+ 1287  cd Documents/
+ 1288  ls
+ 1289  cd ..
+ 1290  cd Downloads/
+ 1291  ls
+ 1292  sudo mv jdk-6u45-linux-x64.bin /usr/
+ 1293  ls
+ 1294  clear
+ 1295  cd /usr
+ 1296  ls
+ 1297  sudo chmod +x jdk-6u45-linux-x64.bin 
+ 1298  ./jdk-6u45-linux-x64.bin 
+ 1299  sudo ./jdk-6u45-linux-x64.bin 
+ 1300  ls
+ 1301  sudo vim /etc/profile
+ 1302  source /etc/profile
+ 1303  ls
+ 1304  java
+ 1305  java version
+ 1306  java -v
+ 1307  cd ..
+ 1308  cd 
+ 1309  ls
+ 1310  exit
+ 1311  cd 
+ 1312  cd Documents/
+ 1313  ls
+ 1314  jieya make-3.81.tar.bz2 
+ 1315  jieya make-3.81.tar.bz2  .
+ 1316  ls
+ 1317  cd make-3.81/
+ 1318  ./configure 
+ 1319  make
+ 1320  sudo make install
+ 1321  make -version
+ 1322  sudo make install
+ 1323  make
+ 1324  ./configure 
+ 1325  make
+ 1326  ls
+ 1327  sudo make install
+ 1328  make -s
+ 1329  make -v
+ 1330  ./make
+ 1331  ./make -v
+ 1332  ls
+ 1333  javac
+ 1334  java
+ 1335  java -v
+ 1336  java -version
+ 1337  cd /media
+ 1338  cd storge/
+ 1339  ls
+ 1340  cd ..
+ 1341  sudo umount ksx/恒歌-003 
+ 1342  sudo mount /dev/sdb1 storge/
+ 1343  cd storge/
+ 1344  ls
+ 1345  cd android/
+ 1346  cd android-2.3.7_r1/
+ 1347  make
+ 1348  ls
+ 1349  cd build/
+ 1350  cd core/
+ 1351  ls
+ 1352  mskr
+ 1353  cd ..
+ 1354  ls
+ 1355  make
+ 1356  ~/Documents/make-3.81/make 
+ 1357  java -v
+ 1358  java -version
+ 1359  ls 
+ 1360  cat .bashrc
+ 1361  cd /etc
+ 1362  ls
+ 1363  cat profile
+ 1364  java -v
+ 1365  java -version
+ 1366  sudo vim profile
+ 1367  source profile
+ 1368  ls
+ 1369  cd
+ 1370  exit
+ 1371  java -version
+ 1372  javac
+ 1373  java
+ 1374  javadoc
+ 1375  cd /usr
+ 1376  ls
+ 1377  rm jdk-6u45-linux-x64.bin 
+ 1378  sudo rm jdk-6u45-linux-x64.bin 
+ 1379  sudo rm -rf jdk1.6.0_45/
+ 1380  ls
+ 1381  apache
+ 1382  /etc/init.d/apache2 start
+ 1383  cd /etc/apache2/
+ 1384  ls
+ 1385  cat apache2.conf 
+ 1386  sudo gedit apache2.conf 
+ 1387  ls
+ 1388  cd mods-enabled/
+ 1389  ls
+ 1390  cat mine.load
+ 1391  cd mime.load
+ 1392  ls
+ 1393  cat mime.load
+ 1394  sudo gedit mime.load 
+ 1395  cd /var
+ 1396  cd www/
+ 1397  mkdir cgi-bin
+ 1398  sudo mkdir cgi-bin
+ 1399  cd cgi-bin/
+ 1400  ls
+ 1401  vim myscript.py
+ 1402  sudo vim myscript.py
+ 1403  cd /var/www/cgi-bin/
+ 1404  ls
+ 1405  sudo touch myscript.py
+ 1406  sudo gedit myscript.py
+ 1407  chmod 755 myscript.py 
+ 1408  sudo chmod 755 myscript.py 
+ 1409  ls -l
+ 1410  /etc/init.d/apache2 restart
+ 1411  systemctl status apache2.service 
+ 1412  /etc/init.d/apache2 restart
+ 1413  /etc/init.d/apache2 stop
+ 1414  /etc/init.d/apache2 start
+ 1415  exit
+ 1416  cd /usr
+ 1417  ls
+ 1418  cd local
+ 1419  ls
+ 1420  cd /etc
+ 1421  cd apache2/
+ 1422  ls
+ 1423  cd conf-enabled/
+ 1424  ls
+ 1425  cd ..
+ 1426  sudo vim apache2.conf 
+ 1427  cat mine.loadexit
+ 1428  exit
+ 1429  cd Downloads/
+ 1430  ls
+ 1431  sudo cp get.html /var/www/cgi-bin/
+ 1432  sudo mv /var/www/cgi-bin/ ../
+ 1433  cd /var
+ 1434  ls
+ 1435  cd www
+ 1436  ls
+ 1437  cd ..
+ 1438  ls
+ 1439  cd www
+ 1440  ls
+ 1441  cd html/
+ 1442  ls
+ 1443  cd ..
+ 1444  mkdir
+ 1445  mkdir cgi-bin
+ 1446  sudo mkdir cgi-bin
+ 1447  ls
+ 1448  sudo mv html/myscript.py  ./cgi-bin/
+ 1449  sudo cp ~/Downloads/get.html ./cgi-bin/
+ 1450  cd cgi-bin/
+ 1451  ls
+ 1452  mv get.html ../html/
+ 1453  sudo mv get.html ../html/
+ 1454  ls
+ 1455  cd ..
+ 1456  cd html/
+ 1457  ls
+ 1458  sudo vim get.html 
+ 1459  sudo vim get_seat.py 
+ 1460  cat /etc/apache2/apache2.conf 
+ 1461  sudo  gedit /etc/apache2/mods-enabled/
+ 1462  sudo  gedit /etc/apache2/mods-enabled/mime.conf 
+ 1463  sudo /etc/init.d/apache2 restart
+ 1464  sudo vim /etc/apache2/apache2.conf 
+ 1465  sudo /etc/init.d/apache2 restart
+ 1466  sudo vim /etc/apache2/apache2.conf 
+ 1467  sudo /etc/init.d/apache2 restart
+ 1468  sudo vim /etc/apache2/apache2.conf 
+ 1469  clear
+ 1470  ls
+ 1471  cd Downloads/
+ 1472  ls
+ 1473  vim py_file.py
+ 1474  python py_file.py 
+ 1475  sudo chown ksx:ksx test_num 
+ 1476  python py_file.py 
+ 1477  vim py_file.py
+ 1478  python py_file.py 
+ 1479  vim py_file.py
+ 1480  python py_file.py 
+ 1481  vim py_file.py
+ 1482  python py_file.py 
+ 1483  vim py_file.py
+ 1484  python py_file.py 
+ 1485  vim py_file.py
+ 1486  python py_file.py 
+ 1487  sudo gedit /var/www/cgi-bin/get_seat.py
+ 1488  cd /var/www/cgi-bin/
+ 1489  ls
+ 1490  chomd 755 get_seat.py 
+ 1491  sudo chomd 755 get_seat.py 
+ 1492  sudo chowd 755 get_seat.py 
+ 1493  sudo chmod 755 get_seat.py 
+ 1494  ls
+ 1495  sudo vim test_num
+ 1496  ls
+ 1497  sudo cp test_num ~/Downloads/
+ 1498  python get_seat.py 
+ 1499  ls
+ 1500  chmod u+r test_num 
+ 1501  sudo chmod u+r test_num 
+ 1502  python get_seat.py 
+ 1503  clear
+ 1504  ls
+ 1505  chown ksx:ksx test_num 
+ 1506  sudo chown ksx:ksx test_num 
+ 1507  python get_seat.py 
+ 1508  eixtq
+ 1509  python get_seat.py 
+ 1510  ls
+ 1511  ls -l
+ 1512  ipconfig
+ 1513  ifconfig
+ 1514  ping 192.168.1.102
+ 1515  sudo gedit get.html 
+ 1516  sudo cp get2.html /var/www/html/
+ 1517  cd /var/www/cgi-bin/
+ 1518  ls
+ 1519  sudo vim get_seat.py 
+ 1520  sudo cp get_seat.py get_seat_cn.py 
+ 1521  sudo vim get_seat.py 
+ 1522  cd ..
+ 1523  cd 
+ 1524  cd workspace/
+ 1525  cd git
+ 1526  ls
+ 1527  mkdir github_pages
+ 1528  cd github_pages/
+ 1529  git clone https://github.com/xdksx/xdksx.github.io
+ 1530  git clone https://git.oschina.net/xdksx/xdksx.github.io
+ 1531  git config --list
+ 1532  cd ..
+ 1533  la
+ 1534  git_work/
+ 1535  ls
+ 1536  cd git_work/
+ 1537  ls
+ 1538  vim tst_a
+ 1539  git push -u origin master
+ 1540  git add tst_a 
+ 1541  git commit -m "1104"
+ 1542  git config --list
+ 1543  git push -u origin master
+ 1544  cd ..
+ 1545  ls
+ 1546  mkdir Next
+ 1547  cd Next/
+ 1548  git clone git@github.com:Simpleyyt/jekyll-theme-next.git
+ 1549  cd jekyll-theme-next/
+ 1550  jekyll serve
+ 1551  jekyll server
+ 1552  cd
+ 1553  cd wor
+ 1554  cd workspace/git/github_pages/
+ 1555  jekyll server
+ 1556  bundle exec jekyll server
+ 1557  sudo apt install ruby-bundler
+ 1558  bundle exec jekyll server
+ 1559  jekyll server
+ 1560  bundle exec jekyll server
+ 1561  jekyll server
+ 1562  bundle exec jekyll server
+ 1563  cd ..
+ 1564  cd poole-master/
+ 1565  jekyll server
+ 1566  cd new
+ 1567  ls
+ 1568  jekyll build
+ 1569  jekyll build --watch to enable
+ 1570  jekyll build --incremental
+ 1571  cd ..
+ 1572  jekyll server
+ 1573  cd new/
+ 1574  jekyll build 
+ 1575  jekyll server
+ 1576  cd ..
+ 1577  jekyll server
+ 1578  jekyll server --incremental
+ 1579  cd new
+ 1580  jekyll build 
+ 1581  cd ..
+ 1582  jekyll server
+ 1583  jekyll build 
+ 1584  jekyll build --incremental
+ 1585  jekyll server
+ 1586  jekyll build 
+ 1587  jekyll server
+ 1588  jekyll build 
+ 1589  jekyll server
+ 1590  jekyll build 
+ 1591  jekyll server
+ 1592  cd ../github_pages/
+ 1593  ls
+ 1594  cd sd
+ 1595  cd xdksx.github.io/
+ 1596  git add .
+ 1597  git commit -m "1104_pool"
+ 1598  git push -u origin master
+ 1599  cd ..
+ 1600  cd  ..
+ 1601  ls
+ 1602  cd poole-master/
+ 1603  ls
+ 1604  touch apache2_cgi_python.md
+ 1605  remarkable 
+ 1606  jekyll build
+ 1607  jekyll build --incremental
+ 1608  jekyll server
+ 1609  jekyll build --incremental
+ 1610  jekyll server
+ 1611  jekyll build --incremental
+ 1612  jekyll server
+ 1613  jekyll build --incremental
+ 1614  jekyll server
+ 1615  jekyll build --incremental
+ 1616  jekyll server
+ 1617  jekyll build --incremental
+ 1618  jekyll server
+ 1619  jekyll build --incremental
+ 1620  jekyll server
+ 1621  jekyll build --incremental
+ 1622  jekyll server
+ 1623  jekyll build --incremental
+ 1624  jekyll server
+ 1625  jekyll build -
+ 1626  jekyll server
+ 1627  jekyll build -
+ 1628  jekyll server
+ 1629  jekyll build 
+ 1630  jekyll server
+ 1631  jekyll build 
+ 1632  jekyll server
+ 1633  jekyll build 
+ 1634  jekyll server
+ 1635  jekyll build 
+ 1636  jekyll server
+ 1637  jekyll build 
+ 1638  jekyll server
+ 1639  jekyll build 
+ 1640  jekyll server
+ 1641  jekyll build 
+ 1642  jekyll server
+ 1643  jekyll build 
+ 1644  jekyll server
+ 1645  jekyll build 
+ 1646  jekyll server
+ 1647  jekyll build 
+ 1648  jekyll server
+ 1649  jekyll build 
+ 1650  jekyll server
+ 1651  jekyll build 
+ 1652  jekyll server
+ 1653  jekyll build 
+ 1654  jekyll server
+ 1655  ping git.oschina.net
+ 1656  git clone https://git.oschina.net/xdksx/xdksx.github.io
+ 1657  git clone git@github.com:xdksx/xdksx.github.io
+ 1658  cd xdksx.github.io/
+ 1659  ls
+ 1660  echo "hello world:" >index.html
+ 1661  git add --all
+ 1662  git commit -m "initial commit1104"
+ 1663  git push -u origin master
+ 1664  git add activity_learn.html 
+ 1665  git commit -m "1104"
+ 1666  git push -u origin master
+ 1667  cd ..
+ 1668  cd ..cd\\
+ 1669  cd ..
+ 1670  cd git
+ 1671  gem
+ 1672  sudo apt install ruby
+ 1673  gem install jekyll bundler
+ 1674  jieya rubygems-2.7.1.tgz 
+ 1675  jieya rubygems-2.7.1.tgz .
+ 1676  jieya rubygems-2.7.1.tgz ./
+ 1677  cd rubygems-2.7.1/
+ 1678  ls
+ 1679  ruby setup.rb 
+ 1680  sudo ruby setup.rb 
+ 1681  gem pristine rake
+ 1682  sudo gem pristine rake
+ 1683  cd ..
+ 1684  gem install jekyll
+ 1685  gem config
+ 1686  gem -h
+ 1687  ruby -v
+ 1688  cd rubygems-2.7.1/
+ 1689  ruby dk.rb init
+ 1690  cd 
+ 1691  ruby
+ 1692  ruby -v
+ 1693  ruby -h
+ 1694  gem source -l
+ 1695  gem source -r https://rubygems.org/ 
+ 1696  gem sources -a http://gems.ruby-china.org
+ 1697  gem source -l
+ 1698  gem install jekyll
+ 1699  sudo gem install jekyll
+ 1700  cd workspace/git
+ 1701  jekyll new my_awesome-site
+ 1702  sudo apt install jeklly
+ 1703  sudo apt install jekyll
+ 1704  apt-get update
+ 1705  sudo apt-get update
+ 1706  sudo apt install jekyll
+ 1707  jekyll new my_awesome-site
+ 1708  cd my_awesome-site/
+ 1709  jekyll serve
+ 1710  cd ..
+ 1711  cd poole-master/
+ 1712  jekyll serve
+ 1713  ls
+ 1714  jekyll build
+ 1715  jekyll serve
+ 1716  jekyll build
+ 1717  jekyll serve
+ 1718  jekyll build
+ 1719  jekyll build --incremental
+ 1720  jekyll serve
+ 1721  jekyll build -
+ 1722  jekyll serve
+ 1723  jekyll build -
+ 1724  jekyll build 
+ 1725  jekyll serve
+ 1726  jekyll build 
+ 1727  jekyll serve
+ 1728  jekyll build 
+ 1729  jekyll build --incremental
+ 1730  jekyll serve
+ 1731  cd  ../cgi-bin/
+ 1732  ls
+ 1733  sudo gedit get_seat_cn.py 
+ 1734  ls
+ 1735  sudo vim get_seat_cn.py 
+ 1736  cd /var/www/
+ 1737  ls
+ 1738  cd html/
+ 1739  ls
+ 1740  sudo gedit get2.html 
+ 1741  cd /etc
+ 1742  cd ap
+ 1743  cd apache2/
+ 1744  ls
+ 1745  cat apache2.conf 
+ 1746  ls
+ 1747  cd mods-enabled/
+ 1748  ls
+ 1749  cat mime.load
+ 1750  javah
+ 1751  java -v
+ 1752  java -version
+ 1753  cd workspace/
+ 1754  ls
+ 1755  cd java
+ 1756  cd android_learn/
+ 1757  ls
+ 1758  mkdir jni
+ 1759  cd jni/
+ 1760  vim TestJni.java
+ 1761  javac TestJni.java 
+ 1762  ls
+ 1763  javah -jni TestJni
+ 1764  ls
+ 1765  cat TestJni.
+ 1766  cat TestJni.h
+ 1767  vim TestJni.c
+ 1768  cc
+ 1769  cc -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/ -fPIC -shared -o libTestJni.so TestJni.c
+ 1770  ls
+ 1771  cc -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/ -fPIC -shared -o libTestJni.so TestJni.c
+ 1772  vim TestJni.c
+ 1773  cc -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/ -fPIC -shared -o libTestJni.so TestJni.c
+ 1774  ls
+ 1775  vim hellow.java
+ 1776  javac hellow.java 
+ 1777  vim hellow.java
+ 1778  javac hellow.java 
+ 1779  vim hellow.java
+ 1780  javac hellow.java 
+ 1781  vim hellow.java
+ 1782  javac hellow.java 
+ 1783  java hellow 
+ 1784  java hellow -Djava.library.path='.'
+ 1785  java -Djava.library.path='.' hellow
+ 1786  history >>history_comd
+ 1787  ls
+ 1788  cat history_comd 
+ 1789  cd workspace/
+ 1790  cd android_learn/
+ 1791  ls
+ 1792  cd jni
+ 1793  ls
+ 1794  cp hellow.class 
+ 1795  cp hellow.class ../
+ 1796  cd ..
+ 1797  ls
+ 1798  java -Djava.library.path='.' hellow
+ 1799  java -Djava.library.path='./jni/' hellow
+ 1800  java -Djava.library.path='jni/' hellow
+ 1801  java -Djava.library.path='jni/.' hellow
+ 1802  cp jni/TestJni.class .
+ 1803  java -Djava.library.path='jni/.' hellow
+ 1804  rm TestJni.class 
+ 1805  rm hellow.class 
+ 1806  cd jni
+ 1807  ls
+ 1808  vim TestJni.java
+ 1809  javah -jni TestJni
+ 1810  cat TestJni.h
+ 1811  vim TestJni.c
+ 1812  cc -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/ -fPIC -shared -o libTestJni.so TestJni.c
+ 1813  vim hellow.java 
+ 1814  javac hellow.java 
+ 1815  java hellow 
+ 1816  java hellow  -Djava.library.path=".“　
+ 1817  java -Djava.library.path="." hellow
+ 1818  ls
+ 1819  mkdir jni_static
+ 1820  mv * jni_static/
+ 1821  mv *.* jni_static/
+ 1822  mv *\.* jni_static/
+ 1823  mv *[.]* jni_static/
+ 1824  mv T* jni_static/
+ 1825  ls
+ 1826  cd jni_static/
+ 1827  ls
+ 1828  cd ..
+ 1829  mkdir jni_dyn
+ 1830  cd jni_dyn/
+ 1831  ls
+ 1832  cat TestJni.java 
+ 1833  vim TestJni.java 
+ 1834  vim TestJni.cpp 
+ 1835  cc  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libSimpleJni.so Simple_Jni.c
+ 1836  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1837  vim TestJni.cpp 
+ 1838  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1839  vim TestJni.cpp 
+ 1840  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1841  vim TestJni.cpp 
+ 1842  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1843  vim TestJni.cpp 
+ 1844  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1845  ls
+ 1846  javac TestJni.java 
+ 1847  ls
+ 1848  java TestJni 
+ 1849  javac hellow.java 
+ 1850  java hellow 
+ 1851  java -Djava.Library.path="." hellow 
+ 1852  java -Djava.library.path="." hellow 
+ 1853  vim TestJni.java
+ 1854  vim hellow.java 
+ 1855  vim TestJni.cpp 
+ 1856  vim TestJni.java 
+ 1857  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1858  vim TestJni.cpp 
+ 1859  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1860  java -Djava.library.path="." hellow 
+ 1861  javac hellow.java 
+ 1862  java -Djava.library.path="." hellow 
+ 1863  javac TestJni.java 
+ 1864  javap -s -p TestJni
+ 1865  vim TestJni.cpp 
+ 1866  g++  -I/usr/jdk-8/include/ -I/usr/jdk-8/include/linux/ -I/home/keshixing/workspace/android_learn/jni/jni_dyn/ -fPIC -shared -o libTestJni.so TestJni.cpp
+ 1867  java -Djava.library.path="." hellow 
+ 1868  wpa
+ 1869  history >>history

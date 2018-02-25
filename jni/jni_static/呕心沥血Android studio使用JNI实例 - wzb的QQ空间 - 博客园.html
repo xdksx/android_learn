@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>呕心沥血Android studio使用JNI实例 - wzb的QQ空间 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-CodingLife.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-CodingLife-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/wzben/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/wzben/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/wzben/wlwmanifest.xml">
+<script async="" src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/analytics.js"></script><script type="text/javascript" src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js"></script><script src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'wzben', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/wzben/"><img id="blogLogo" src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/wzben/">wzb的QQ空间</a></h1>
+<h2></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/wzben/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/wzben/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/wzben/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 148&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 60</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/wzben/p/5733571.html">呕心沥血Android studio使用JNI实例</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>发现网上很多JNI的使用教程，也很详细，不过有的地方有些缺漏，导致很多小问题难以解决的，今天就来总结一下。</p>
+<p>&nbsp;</p>
+<p>准备工作：下载NDK。</p>
+<p>简单的说，要用到C/C++，就要用NDK。直接百度搜索然后去官网下载就行，位置可以随便放。</p>
+<p>&nbsp;</p>
+<p>1、新建一个类，声明native方法。这个类是java与C/C++交互的中介，方法由java声明，由C/C++实现。</p>
+<p>不在Activity类里面写是为了避免编译时报错：找不到android.support.v7.app.AppCompatActivity</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">class</span><span style="color: #000000;"> myJNI {
+<br>　　//加载so库
+    </span><span style="color: #0000ff;">static</span><span style="color: #000000;"> {
+        System.loadLibrary(</span>"JniTest"<span style="color: #000000;">);
+    }
+
+　　//native方法
+    </span><span style="color: #0000ff;">public</span> <span style="color: #0000ff;">static</span> <span style="color: #0000ff;">native</span><span style="color: #000000;"> String sayHello();
+
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>2、打开android studio终端，使用javac编译上述文件，生成class文件。</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803162126856-1467052994.png" alt=""></p>
+<p>&nbsp;</p>
+<p>命令：</p>
+<div class="cnblogs_code">
+<pre>D:\AndroidStudioProject\testJNI\app\src\main\java\com\example\binbin\testjni&gt;javac myJNI.java</pre>
+</div>
+<p>&nbsp;</p>
+<p>3、确认自己类的包名！然后在上一级的位置使用javah生成.h头文件</p>
+<p>一定要在上一级哦，不然不会报错：找不到xxx类</p>
+<p>&nbsp;</p>
+<p>比如我的myJNI.class在</p>
+<div class="cnblogs_code">
+<pre>D:\AndroidStudioProject\testJNI\app\src\main\java\com\example\binbin\testjni</pre>
+</div>
+<p>我的包名是：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff;">package</span> com.example.binbin.testjni;</pre>
+</div>
+<p>所以我的javah命令应该这么写:</p>
+<div class="cnblogs_code">
+<pre>D:\AndroidStudioProject\testJNI\app\src\main\java&gt;javah -jni com.example.binbin.testjni.myJNI</pre>
+</div>
+<p>&nbsp;</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803162749090-2121310190.jpg" alt="" width="1115" height="686"></p>
+<p>然后就能看到生成了一个h文件。</p>
+<p>&nbsp;</p>
+<p>4、新建一个jni文件夹，新建main.c，把.h里面的内容复制进去，并实现里面的函数。</p>
+<p>&nbsp;</p>
+<p>生成的h文件</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">/*</span><span style="color: #008000;"> DO NOT EDIT THIS FILE - it is machine generated </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+#include </span>&lt;jni.h&gt;
+<span style="color: #008000;">/*</span><span style="color: #008000;"> Header for class com_example_binbin_testjni_myJNI </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+
+#ifndef _Included_com_example_binbin_testjni_myJNI
+#define _Included_com_example_binbin_testjni_myJNI
+#ifdef __cplusplus
+extern </span>"C"<span style="color: #000000;"> {
+#endif
+</span><span style="color: #008000;">/*</span><span style="color: #008000;">
+ * Class:     com_example_binbin_testjni_myJNI
+ * Method:    sayHello
+ * Signature: ()Ljava/lang/String;
+ </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+JNIEXPORT jstring JNICALL Java_com_example_binbin_testjni_myJNI_sayHello
+        (JNIEnv </span>*<span style="color: #000000;">, jclass);</span><span style="color: #000000;">
+
+#ifdef __cplusplus
+}
+#endif
+#endif</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>拷贝修改后的main.c</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #008000;">/*</span><span style="color: #008000;"> DO NOT EDIT THIS FILE - it is machine generated </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+#include </span>&lt;jni.h&gt;
+<span style="color: #008000;">/*</span><span style="color: #008000;"> Header for class com_example_binbin_testjni_myJNI </span><span style="color: #008000;">*/</span><span style="color: #000000;">
+
+#ifndef _Included_com_example_binbin_testjni_myJNI
+#define _Included_com_example_binbin_testjni_myJNI
+#ifdef __cplusplus
+extern </span>"C"<span style="color: #000000;"> {
+#endif
+</span><span style="color: #008000;">/*</span><span style="color: #008000;">
+ * Class:     com_example_binbin_testjni_myJNI
+ * Method:    sayHello
+ * Signature: ()Ljava/lang/String;
+ </span><span style="color: #008000;">*/<br><br></span><span style="color: #000000;">//就实现了个函数 JNIEnv的用法可以自行百度，这里就不展开了
+JNIEXPORT jstring JNICALL Java_com_example_binbin_testjni_myJNI_sayHello
+        (JNIEnv </span>*<span style="color: #000000;">env, jclass jobj){
+<br>　　//返回一句话
+    </span><span style="color: #0000ff;">return</span> (*env)-&gt;NewStringUTF(env,"JNI hahahahahahahaha"<span style="color: #000000;">);
+
+}
+
+#ifdef __cplusplus
+}
+#endif
+#endif</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>还要在jni文件夹下添加一个空白的util.c文件，不然会报错，我也不知道为什么。</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803163831872-1055294056.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>5、配置NDK</p>
+<pre>打开Project的local.properties文件添加NDK路径</pre>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803164038997-1584383621.png" alt=""></p>
+<p>　　</p>
+<p>　　</p>
+<pre>打开app Module的build.gradle文件，在defaultConfig节点里添加以下代码<br>注意这里的moduleName，是我们在之前自己编写的类里面加载的so库名</pre>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;"> ndk {
+            moduleName </span>"JniTest"<span style="color: #000000;">
+            ldLibs </span>"log", "z", "m"<span style="color: #000000;">
+            abiFilters </span>"armeabi", "armeabi-v7a", "x86"<span style="color: #000000;">
+        }</span></pre>
+</div>
+<p>&nbsp;</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803164349106-1193222717.png" alt=""></p>
+<p>&nbsp;</p>
+<p>　　</p>
+<pre>还要在gradle.properties里面加上这么一句话：</pre>
+<div class="cnblogs_code">
+<pre>android.useDeprecatedNdk=<span style="color: #0000ff;">true</span></pre>
+</div>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803164509512-513327347.png" alt=""></p>
+<p>&nbsp;</p>
+<p>6、生成SO库</p>
+<p>完成以上步骤之后，我们rebuild一下就可以生成so库了</p>
+<p>在项目的app\build\intermediates\ndk\debug\lib路径下</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803164721809-359071506.png" alt=""></p>
+<p>&nbsp;</p>
+<p>7、配置so库</p>
+<p>在src\main下新建文件夹jniLIB，并将生成的SO文件拷贝到该文件夹下</p>
+<p><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803164937840-829767712.png" alt=""></p>
+<p>&nbsp;</p>
+<p>8、使用JNI</p>
+<p>因为native方法声明成了静态的方法，在Activity里面直接调用myJNI类就行</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>  <span style="color: #0000ff;">protected</span> <span style="color: #0000ff;">void</span><span style="color: #000000;"> onCreate(Bundle savedInstanceState) {
+        </span><span style="color: #0000ff;">super</span><span style="color: #000000;">.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        text </span>=<span style="color: #000000;"> (TextView)findViewById(R.id.text);<br>　　　　　//调用
+        text.setText(myJNI.sayHello());
+
+
+
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<p>&nbsp;<img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/844215-20160803165206887-467160565.png" alt=""></p>
+<p>ok！</p>
+<p>&nbsp;</p>
+<p>总结一下流程：</p>
+<p>编写静态方法（用java声明）--&gt;编译生成class文件---&gt;编译生成h文件----&gt;编写C文件（用C/C++实现）</p>
+<p>----&gt;配置NDK----&gt;配置so库----&gt;在Activity调用（Java调用C/C++）。</p>
+<p>&nbsp;</p>
+<p>android studio虽然很多小问题，但也算很方便了，mk文件编辑器帮你弄好了，直接可以生成so库。</p>
+<pre></pre>
+<p>&nbsp;</p>
+<pre></pre></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5733571,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('4ce7e932-ab92-e511-9fc1-ac853d9f53cc');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/wzben/" target="_blank"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/wzben/">wzb的QQ空间</a><br>
+            <a href="http://home.cnblogs.com/u/wzben/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/wzben/followers">粉丝 - 45</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('4ce7e932-ab92-e511-9fc1-ac853d9f53cc');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5733571,'Digg')">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(5733571,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/wzben/p/5724726.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/wzben/p/5724726.html" title="发布于2016-08-01 09:55">Service通信的两篇博文</a><br><a href="http://www.cnblogs.com/wzben/p/5738468.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/wzben/p/5738468.html" title="发布于2016-08-04 21:29">百度地图SDK的使用</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2016-08-03 16:57</span> <a href="http://www.cnblogs.com/wzben/">wzb的QQ空间</a> 阅读(<span id="post_view_count">23641</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5733571" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5733571);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=255602,cb_entryId=5733571,cb_blogApp=currentBlogApp,cb_blogUserGuid='4ce7e932-ab92-e511-9fc1-ac853d9f53cc',cb_entryCreatedDate='2016/8/3 16:57:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://click.aliyun.com/m/33696/" target="_blank">【调查】有奖调研即刻参与，你竟然是酱紫程序猿！</a><br><a href="http://xc.hubwiz.com/course/592ee9b2b343f27b0ae1ba99?affid=cnblogs" target="_blank">【推荐】Vue.js 2.x 快速入门，大量高效实战示例</a><br><a href="https://cloud.tencent.com/act/free?fromSource=gwzcw.562633.562633.562633" target="_blank">【推荐】腾讯云 普惠云计算 0门槛体验</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/activereports_overview.htm?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=AR&amp;utm_campaign=community" target="_blank"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20171031213643701-1551350337.jpg" alt="葡萄城" width="300" height="250"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/582379/" target="_blank">吊打战狼，单挑叶问，演员马云的电影首秀能打几分？</a><br> ·  <a href="http://news.cnblogs.com/n/582384/" target="_blank">如何像NASA顶级程序员一样编程 10条重要原则</a><br> ·  <a href="http://news.cnblogs.com/n/582383/" target="_blank">天猫双11全纪录：24小时1682亿元是怎么炼成的？</a><br> ·  <a href="http://news.cnblogs.com/n/582376/" target="_blank">双11这天刘强东畅想了未来：AI完全可以替代蓝领工作</a><br> ·  <a href="http://news.cnblogs.com/n/582380/" target="_blank">9图读懂：这个双11你们是如何花光1682亿的！</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a href="http://click.aliyun.com/m/32986/" target="_blank"><img src="%E5%91%95%E5%BF%83%E6%B2%A5%E8%A1%80Android%20studio%E4%BD%BF%E7%94%A8JNI%E5%AE%9E%E4%BE%8B%20-%20wzb%E7%9A%84QQ%E7%A9%BA%E9%97%B4%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/24442-20171027070203758-1397753435.jpg" alt="阿里云双11" width="468" height="60"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/563790/" target="_blank">关于编程，你的练习是不是有效的？</a><br> ·  <a href="http://kb.cnblogs.com/page/581467/" target="_blank">改善程序员生活质量的 3+10 习惯</a><br> ·  <a href="http://kb.cnblogs.com/page/568841/" target="_blank">NASA的10条代码编写原则</a><br> ·  <a href="http://kb.cnblogs.com/page/578502/" target="_blank">为什么你参加了那么多培训，却依然表现平平？</a><br> ·  <a href="http://kb.cnblogs.com/page/579832/" target="_blank">写给初学前端工程师的一封信</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/wzben/">wzb的QQ空间</a><br>园龄：<a href="http://home.cnblogs.com/u/wzben/" title="入园时间：2015-11-24">1年11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/wzben/followers/">45</a><br>关注：<a href="http://home.cnblogs.com/u/wzben/followees/">5</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('4ce7e932-ab92-e511-9fc1-ac853d9f53cc')">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2017/10/01');return false;">&lt;</a></td><td align="center">2017年11月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2017/12/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalTodayDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td></tr><tr><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="widget_my_google" class="div_my_zzk"><input name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/wzben/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/wzben/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/wzben/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/wzben/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/wzben/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/wzben/archive/2017/08.html">2017年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/wzben/archive/2017/07.html">2017年7月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/wzben/archive/2017/06.html">2017年6月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/wzben/archive/2016/12.html">2016年12月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/wzben/archive/2016/11.html">2016年11月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/wzben/archive/2016/10.html">2016年10月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/wzben/archive/2016/09.html">2016年9月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/wzben/archive/2016/08.html">2016年8月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/wzben/archive/2016/07.html">2016年7月 (18)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/wzben/archive/2016/05.html">2016年5月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/wzben/archive/2016/04.html">2016年4月 (22)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/wzben/archive/2016/03.html">2016年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/wzben/archive/2016/02.html">2016年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/wzben/archive/2016/01.html">2016年1月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/wzben/archive/2015/12.html">2015年12月 (27)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/wzben/archive/2015/11.html">2015年11月 (6)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzben/p/5930538.html#3823196">1. Re:Tesseract-OCR识别中文与训练字库实例</a></li>
+        <li class="recent_comment_body">博主，自己训练的字库怎么和自带的chi_sim字库合并啊？不能合并的话那自己训练的字库也就没什么用了吧，识别率就更低了，就只能识别自己训练过的字了</li>
+        <li class="recent_comment_author">--app78</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzben/p/5945071.html#3819965">2. Re:基于Tesseract的身份证识别Android端应用</a></li>
+        <li class="recent_comment_body">扫描出来是乱码 手机加语言包了啊</li>
+        <li class="recent_comment_author">--你好初见</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzben/p/5930538.html#3812309">3. Re:Tesseract-OCR识别中文与训练字库实例</a></li>
+        <li class="recent_comment_body">博主请教下在生成box的时候能识别出来，训练的时候识别不了 这种情况怎么解决</li>
+        <li class="recent_comment_author">--YanKng</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzben/p/5945071.html#3806256">4. Re:基于Tesseract的身份证识别Android端应用</a></li>
+        <li class="recent_comment_body">源码项目真的运行不了，能麻烦重新给一份吗？1178036973@qq.com</li>
+        <li class="recent_comment_author">--晨曦纹</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/wzben/p/5930538.html#3798508">5. Re:Tesseract-OCR识别中文与训练字库实例</a></li>
+        <li class="recent_comment_body">这个分享不错，赞一个</li>
+        <li class="recent_comment_author">--Andy_Cheng</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzben/p/5930538.html">1. Tesseract-OCR识别中文与训练字库实例(45022)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5733571.html">2. 呕心沥血Android studio使用JNI实例(23641)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5079303.html">3. STM32使用无源蜂鸣器演奏歌曲(4772)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5171313.html">4. 简单的方法实现仿微信底部的Tab选项卡界面(4666)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5357406.html">5. 汇编入门：循环语句的汇编实现(3626)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzben/p/5930538.html">1. Tesseract-OCR识别中文与训练字库实例(14)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5037433.html">2. JAVA爬取亚马逊的商品信息(8)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5058470.html">3. 使用mbed进行STM32板子的开发(5)</a></li><li><a href="http://www.cnblogs.com/wzben/p/7233674.html">4. 美团点评半年实习感悟(5)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5945071.html">5. 基于Tesseract的身份证识别Android端应用(4)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/wzben/p/5930538.html">1. Tesseract-OCR识别中文与训练字库实例(16)</a></li><li><a href="http://www.cnblogs.com/wzben/p/7233674.html">2. 美团点评半年实习感悟(7)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5069235.html">3. STM32呼吸灯(2)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5040353.html">4. 使用JAVA实现模拟登陆并发送新浪微博（非调用新浪API）(2)</a></li><li><a href="http://www.cnblogs.com/wzben/p/5209826.html">5. Android 从本地图库或拍照后裁剪图片并设置头像(2)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2017 wzb的QQ空间
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

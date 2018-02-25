@@ -1,0 +1,72 @@
+所有组件公用的属性：
+<TextView
+　　android:layout_width  --
+    android:layout_height --
+	android:id="@+id/~
+长和宽的值类型:match_parent  fill_parent(两个相同，匹配父，父为布局，为手机屏幕的大小) wrap_parent(控件内容决定控件大小）
+	
+
+1、组件类型：
+1)TextView 显示文本的控件:
+  text="xx"  文本内容
+  eg:android:text="xx"   默认是左上角对齐
+  文字相关：
+  　　改变对齐方式：android:gravity="center" (top,bottom,left,right,center)
+      文字大小：android:textSize="24sp"(nsp等）
+	  文字颜色：android:textColor="#xxxxx"
+其他关于这个控件的属性：见https://developer.android.google.cn/reference/android/widget/TextView.html
+
+2)Button 
+ text="xxx" 定义按钮上的文本，会默认为大写字母
+ android:textAllCaps="false" 禁用上述默认大写字母
+ 为按钮注册监听器:在适当的位置：
+ 　　//creat a button listener 一般在OnCreate中
+    //匿名类的方式
+   　Button button1=(Button) findViewById(R.id.button_1);
+	 button1.setOnClickListener(new View.OnClickListener(){
+	  @Override
+	   public void onClick(View v){
+	   Toast.makeText(MainActivity.this,"Y click bu 1",Toast.LENGTH_SHORT).show();
+	   }
+	 });
+  //实现接口的方式：
+　public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    OnCreate中：button.setOnClickListener(this);
+	            
+	@Override
+    public void onClick(View v){
+			switch(xx)
+			{
+				case R.id.button:
+				...
+			}
+	}
+	//new 一个监听器
+     private View.OnClickListener MyListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(MainActivity.this,"you have clicked Button2",Toast.LENGTH_SHORT).show();
+        }
+    };
+ 3)EditText:允许用户输入和编辑内容，并可以在程序中对这些内容进行处理，为一条线，输入的文字在线上
+ 　hint属性提示性文本　android:hint="这是一个提示文本"　 
+ 　默认当出现一行承受不了的时候会出现多行
+ 　　maxLines＝2设置为最大显示２行，当出现超过两行时，文本会向上滚动，不会继续拉伸
+ 　　  
+ 　　通过点击按钮获得EditText的内容：在原有的监听器中：
+      private EditText editText;
+ 　　　在oncreate中先获取EditText对象：editText=(EditText)findViewById(R.id.edit_text);
+      接着在处理逻辑中：String str=editText.getText().toString();
+      
+ 4)ImageView 图片控件　需要提前准备图片文件，放在drawable开头的目录中，有各种分辨率，在新建drawable-xhdpi目录并放置图片后
+ <ImageView 
+       android:id="@+id/image_view"
+       android:layout_width="wrap_content"
+       android:layout_heigth="wrap_content"
+       android:src="@drawable/img_1"/>        --图片名字
+   通过点击按扭动态更改图片
+   private ImageView imageView;
+   imageView= (ImageView)findViewById(R.id.image_view);
+   在Onclick处理逻辑中：
+   　　　imageView.setImageResource(R.drawable.img_2);  --更改了图片
+ 5)ProgressBar 进度条
