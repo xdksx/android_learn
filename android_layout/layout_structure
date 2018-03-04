@@ -1,0 +1,54 @@
+这一主题主要是将布局架构：包含控件结构，UI显示及关系，自定义控件
+一、控件的结构：
+　　　　　　　　　  view 
+            |
+  TextView   ImageView  ViewGroup
+  
+  EditText                  LinearLayout&RelativeLayout ,..
+&Button   
+
+所以可以利用上面的继承关系创建自己的控件‘
+View 是安卓中最基本的一种UI组件，它可以在屏幕上绘制一块矩形区域，然后能响应这块区域的各种事件；因此我们使用的各种控件
+其实就是在VIEW的基础上由添加了各自的功能　viewGroup是一个特殊的view,能放置布局和控件（子view 和子viewgroup)
+
+
+
+
+二、window，view ,activity，xml的关系
+Activity是一个工人，它来控制Window；Window是一面显示屏，用来显示信息；View就是要显示在显示屏上的信息，这些View都是层层重叠在一起（通过infalte()和addView()）放到Window显示屏上的。而LayoutInfalter就是用来生成View的一个工具，XML布局文件就是用来生成View的原料
+
+xml和其他资源文件一样，通过R..引用，之后取得后通过xml解析，把其中定义的控件转换成view子类等，从而
+再被window等设置到窗口上；
+
+
+viewgrup和view控件，viewgroup作为父控件可以包含多个view控件并对其进行管理，从而形成控件树
+控件树：上层控件负责下层控件的测量和绘制，并传递交互事件；
+　　　　通常在activcity中使用findViewById就是在控件树中以深度遍历的方式进行查找对应的元素；
+　　　　　　　在树的顶端，为viewparent对象，是整个树的控制核心，统一调度和分配
+
+三、setcontentview如何设置一个布局：
+每一个Activity都包含一个Window对象，由PhoneWindow实现，通过它来显示信息
+在Acticty源码中：
+ private Window mWindow;
+在attach函数中初始化为PhoneWindow()
+　  mWindow = new PhoneWindow(this, window);
+经常使用getDecorView()来获取DecorView,这个作为整个应用窗口的根View ,封装了一些窗口操作的通用方法，他会把要显示的内容呈现在phonewindow上，
+其中包含了view监听事件，会通过WindowManagerService来接收，接收到的事件它用过Activoity回调相应的onclickListener;
+在显示上，DecorView将屏幕分为:TitleView 和ContentView；后者为一个ID 为content的Framelayout，如activity_main.xml就被设置在这样一个Framelayout
+
+用户可以通过requestWIndowFeature设置为全屏显示，这样就只有content，所以要在setcontview前调用requ~才能生效
+
+
+四、分析UI 涉及的方方面面：
+像上面说的就不重复了；
+１)控件
+２）绘制　canvas 和通过绘制自定义全新控件
+３）事件拦截：即因为viewgroup下嵌套viewgroup和控件，可能有多层嵌套，这样当接受到屏幕点击事件时如何传递的问题
+４）滑动效果 scroll:滑动，本质上是移动一个view,改变其当前的位置，需要监听用户触摸屏的操作事件，传入的坐标，动态的改变view的坐标，从而
+实现view跟随用户的触摸滑动而滑动
+（涉及窗口坐标体系和屏幕的触控事件－MotionEvent)
+５）绘图机制（屏幕知识；2D绘图技巧(canvas)和xml绘图（bitmap,shape,layer图层叠加)，图像处理技巧（如将图片处理成底片效果，老照片效果等
+这里涉及图形的旋转变换，像素分析，画笔特效如刮刮乐），surfaceview(view孪生兄弟）使用－－减少卡顿的优化（若自定义的view需要频繁刷新且刷新时数据
+处理量比较大，则考虑使用surfaceview）
+６)动画机制（android　view动画框架（视图动画和属性动画，在xml中使用属性动画，SVG矢量动画机制）
+欲深入学习，见android群英传，但是未提供完整实例，只有关键代码片段

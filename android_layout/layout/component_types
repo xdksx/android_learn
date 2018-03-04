@@ -5,7 +5,14 @@
 	android:id="@+id/~
 长和宽的值类型:match_parent  fill_parent(两个相同，匹配父，父为布局，为手机屏幕的大小) wrap_parent(控件内容决定控件大小）
 	
-
+   android:visibility 可见属性:可选值有三种：visible invisible gone,默认为第一个可见，invisible表示透明不可见，但是占据屏幕位置，gone不可见且不再占据屏幕
+   通过setVisibility()设置控件的可见性
+   如:progressbar.setVisibility(View.VISIBLE/View......)
+import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuItem;
 1、组件类型：
 1)TextView 显示文本的控件:
   text="xx"  文本内容
@@ -69,4 +76,43 @@
    imageView= (ImageView)findViewById(R.id.image_view);
    在Onclick处理逻辑中：
    　　　imageView.setImageResource(R.drawable.img_2);  --更改了图片
- 5)ProgressBar 进度条
+ 5)ProgressBar 进度条 默认圆圈
+ <ProgressBar 
+    android:id="@+id/progress_bar"
+    android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	style="?android:attr/progressBarStyleHorizontal"  //设置进度条为长条型
+    android:max="100"/>　//设置进度条的最大值
+    让进度条往前走：　　
+      　　　　　　　　　　　int progress=progressbar.getProgress();
+                 progress=progress+10;
+                 progressbar.setProgress(progress);
+                 
+  ６）AlertDialog 提示对话框
+  import android.app.AlertDialog;
+import android.content.DialogInterface;
+　　　 AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);//创建新的对话框
+                  dialog.setTitle("this is a dialog");　//设置标题
+                  dialog.setMessage("something important");//和提示消息
+                  dialog.setCancelable(true);//设置是否可以取消，true表现为按返回键或者背景就会消失,false不行
+                  dialog.setPositiveButton("OK",new DialogInterface.OnClickListener(){//设置按ok时的事件
+					  @Override
+					  public void onClick(DialogInterface dialog,int which){
+						  imageView.setImageResource(R.drawable.img2);
+					  }
+				  });
+				  dialog.setNegativeButton("Cancel",new DialogInterface.OnClickListener(){//设置按取消时的事件
+					  @Override
+					  public void onClick(DialogInterface dialog,int which){
+					  }
+				  });
+				  dialog.show();//显示它
+				    
+７)import android.app.ProgressDialog;
+进度条对话框
+	  ProgressDialog progressDialog=new ProgressDialog (MainActivity.this);
+						  progressDialog.setTitle("this is a ProgressDialog");
+						  progressDialog.setMessage("Loading..");
+						  progressDialog.setCancelable(true);
+						  progressDialog.show();
+更多请看文档和例子

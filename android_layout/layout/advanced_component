@@ -1,0 +1,326 @@
+
+一、ListView 只能实现纵向滚动，性能也不是很好
+
+1、ListView 滚动消息列表的控件，想qq消息等
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+ListView的数据需要先准备好，可以从数据库中读取或者，也可以是数组等，不过数组中的数据无法直接传递给ListView,需要借助适配器：
+eg:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    	
+    	
+
+		
+<ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+ </LinearLayout>
+ 
+public class FirstActivity extends AppCompatActivity { //Activity {
+
+   private String[] data={"Apple","banbna:","bull","fjdks","kscanr","kscanr","kscanr","kscanr","kscanr","kscanr","Apple","banbna:","bull","fjdks","kscanr","kscanr","kscanr","kscanr","kscanr","kscanr"};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.first_layout);
+		ArrayAdapter<String> adapter=new ArrayAdapter<String>(FirstActivity.this,android.R.layout.simple_list_item_1,data);
+		//参数传入当前上下文，listView的子项布局id，这里是一个android内置的布局文件，里面只有一个textview,可以显示一段文本
+		ListView listView=(ListView)findViewById(R.id.list_view);
+		listView.setAdapter(adapter);
+	}
+}
+　２、定制ListView的界面
+这里理解起来可能不好理解，但是可以这样想，定制的话，就是将上面的简单例子复杂化了；
+上述例子涉及　　
+ArrayAdapter<String>  --泛型数据类型为String
+android.R.layout.simple_list_item_1  --子项布局，这里仅仅是简单的文本
+data　　  --数据类型，这里和泛型数据类型一致都是String
+复杂化，定制无非就是把上述三种替换成自己定义的如：
+１）适配器的泛型数据：Fruit:
+package org.example.fromzeroapplication;
+
+public class Fruit {
+
+    private String name;
+
+    private int imageId;
+
+    public Fruit(String name, int imageId) {
+        this.name = name;
+        this.imageId = imageId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+}
+
+从而定义了适配器类型：FruitAdapter，注意这里为什么要定义这个适配器：它重写了父类的一组函数，用于将上下文，ListView子项布局的id和数据传递进来
+重写了getview 方法，这个方法用于在每个子项被滚动到屏幕内的时候就会被调用；　　
+
+package org.example.fromzeroapplication;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
+
+public class FruitAdapter extends ArrayAdapter<Fruit> {
+
+    private int resourceId;
+
+    public FruitAdapter(Context context, int textViewResourceId,
+                        List<Fruit> objects) {
+        super(context, textViewResourceId, objects);
+        resourceId = textViewResourceId;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {//这里进一步做了优化
+        Fruit fruit = getItem(position); // 获取当前项的Fruit实例
+        View view;
+        ViewHolder viewHolder;
+        if (convertView == null) {//getview参数convertview是用于将之前加载好的布局进行缓存，这样就可以不用每一次都进行重新加载布局
+            view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.fruitImage = (ImageView) view.findViewById (R.id.fruit_image);
+            viewHolder.fruitName = (TextView) view.findViewById (R.id.fruit_name);
+            view.setTag(viewHolder); // 将ViewHolder存储在View中
+        } else {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
+        }
+        viewHolder.fruitImage.setImageResource(fruit.getImageId());
+        viewHolder.fruitName.setText(fruit.getName());
+        return view;
+    }
+
+    class ViewHolder {//同时定义一个内部类对控件实例进行缓存，配合convertview就不用每一次都进行findview了
+
+        ImageView fruitImage;
+
+        TextView fruitName;
+
+    }
+
+}
+
+２）定制子项布局为自己设置的：
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fruit_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/fruit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp" />
+
+</LinearLayout>
+
+
+３）定义数据类型
+private List<Fruit> fruitList=new ArrayList<>();
+
+
+
+
+３ListView的点击事件：
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.first_layout);
+        initFruits(); // 初始化水果数据
+        FruitAdapter adapter = new FruitAdapter(FirstActivity.this, R.layout.fruit_item, fruitList);
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//主要函数
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {//传入位置position，根据位置进行
+                Fruit fruit = fruitList.get(position);//获取fruit
+                Toast.makeText(FirstActivity.this, fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+二、RecyclerView:官方推荐，用于替换ListView,在support库中
+０）在build.gradle中增加：
+
+ compile 'com.android.support:recyclerview-v7:25.3.1'
+
+１）<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    	
+    	
+
+		
+< android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+ </LinearLayout>
+２）适配器：
+
+package org.example.fromzeroapplication;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.List;
+import android.support.v7.widget.RecyclerView;
+
+
+
+public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{//定义适配器
+
+    private List<Fruit> mFruitList;
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        View fruitView;
+        ImageView fruitImage;
+        TextView fruitName;
+
+        public ViewHolder(View view) {//view为RecycleView子项的最外层布局
+            super(view);
+            fruitView = view;
+            fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+            fruitName = (TextView) view.findViewById(R.id.fruit_name);
+        }
+    }
+
+    public FruitAdapter(List<Fruit> fruitList) {//构造函数
+        mFruitList = fruitList;
+    }
+//继承自RecyclerView.Adapter,则要重写　onCreateViewHolder，onBindViewHolder，getItemCount
+//onCreateViewHolder：用于创建ViewHolder实例，传入fruit_item布局最后返回holder
+//onBindViewHolder:用于对recyclerview子项数据进行赋值，会在每个子项被滚动到屏幕的时候执行
+//
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {//
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fruit_item, parent, false);//得到布局
+        final ViewHolder holder = new ViewHolder(view);//传入布局并设置holder
+        holder.fruitView.setOnClickListener(new View.OnClickListener() {//设置布局的事件
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(v.getContext(), "you clicked view " + fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.fruitImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mFruitList.get(position);
+                Toast.makeText(v.getContext(), "you clicked image " + fruit.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {//在布局滚动时执行
+        Fruit fruit = mFruitList.get(position);//取得滚动位置对应的数据
+        holder.fruitImage.setImageResource(fruit.getImageId());//设置布局数据
+        holder.fruitName.setText(fruit.getName());
+    }
+
+    @Override
+    public int getItemCount() {
+        return mFruitList.size();
+    }
+
+}
+//个人理解：适配器相当于对布局的容器，布局xml载入适配器后，适配器对布局进行设置，创建子项，监听事件等如onCreateViewHolder,holeder得到布局的信息；
+　　　在布局滚动时会调用适配器的对应函数来设置对应应该显示的内容
+３）MainActivity
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+
+public class MainActivity extends AppCompatActivity {
+
+    private List<Fruit> fruitList = new ArrayList<Fruit>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initFruits();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);//找到布局
+        StaggeredGridLayoutManager layoutManager = new
+                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);//创建布局方式为瀑布型
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);//线性布局
+        layoutManager.setOrientation(LinearLayoutManager,HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);//指定布局方式
+        FruitAdapter adapter = new FruitAdapter(fruitList);
+        recyclerView.setAdapter(adapter);//设置布局的适配器
+    }
+
+    private void initFruits() {
+        for (int i = 0; i < 2; i++) {
+            Fruit apple = new Fruit(getRandomLengthName("Apple"), R.drawable.apple_pic);
+            fruitList.add(apple);
+            Fruit banana = new Fruit(getRandomLengthName("Banana"), R.drawable.banana_pic);
+            fruitList.add(banana);
+            Fruit orange = new Fruit(getRandomLengthName("Orange"), R.drawable.orange_pic);
+            fruitList.add(orange);
+            Fruit watermelon = new Fruit(getRandomLengthName("Watermelon"), R.drawable.watermelon_pic);
+            fruitList.add(watermelon);
+            Fruit pear = new Fruit(getRandomLengthName("Pear"), R.drawable.pear_pic);
+            fruitList.add(pear);
+            Fruit grape = new Fruit(getRandomLengthName("Grape"), R.drawable.grape_pic);
+            fruitList.add(grape);
+            Fruit pineapple = new Fruit(getRandomLengthName("Pineapple"), R.drawable.pineapple_pic);
+            fruitList.add(pineapple);
+            Fruit strawberry = new Fruit(getRandomLengthName("Strawberry"), R.drawable.strawberry_pic);
+            fruitList.add(strawberry);
+            Fruit cherry = new Fruit(getRandomLengthName("Cherry"), R.drawable.cherry_pic);
+            fruitList.add(cherry);
+            Fruit mango = new Fruit(getRandomLengthName("Mango"), R.drawable.mango_pic);
+            fruitList.add(mango);
+        }
+    }
+
+    private String getRandomLengthName(String name) {
+        Random random = new Random();
+        int length = random.nextInt(20) + 1;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            builder.append(name);
+        }
+        return builder.toString();
+    }
+
+}

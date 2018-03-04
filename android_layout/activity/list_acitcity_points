@@ -1,0 +1,5 @@
+本文展示学习Acticity需要学习的内容点：
+１、Activity的生命周期，可见性和Activity任务栈结构，和他们之间的关系--必须要清楚的认识运行
+时什么状态对应什么表现
+２、通过AndroidMainifest或intent　flag来设置Activity启动模式：standard,singleTop等，决定是否每次会创建新的实例还是，即决定
+栈的方式

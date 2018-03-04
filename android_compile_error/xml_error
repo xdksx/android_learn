@@ -1,0 +1,4 @@
+1、在编译时提示/home/ksx/AndroidStudioProjects/FromZeroApplication/app/build/intermediates/res/merged/debug/layout/first_layout.xml:11: error: Error parsing XML: unbound prefix
+
+
+检查:拼写错误
