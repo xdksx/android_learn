@@ -1,0 +1,61 @@
+
+
+gradle  Groovy 领域语言　　DSL    摒弃了Ant 和Maven 
+
+在app 外有一个 build.gradle。在app中有一个build.gradle
+  
+在外面的　gradle 也可以构建c++等项目，
+buildscript {
+    repositories {
+        jcenter()　　　//代码托管仓库　利用它可以轻松引用jcenter开源项目
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.2'　　//声明构建的是android
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+app中
+apply plugin: 'com.android.application'　//表明为android 应用程序模块，为com.android.library表示库模块
+
+android {　　　//安卓闭包
+    compileSdkVersion 25　　　　//项目的编译版本，25为API 25,对应android 7.1
+    buildToolsVersion "25.0.3"   //项目构建工具版本
+    defaultConfig {
+        applicationId "org.example.myactivity1"　　　项目包名
+        minSdkVersion 25　　　　　//项目最低兼容的android系统版本
+        targetSdkVersion 25　　//表明如22表示只在22测试充分，如不启动运行时权限，android６　的运行时权限就不会加，表明只在5上做充分测试
+        versionCode 1　　　项目版本编号
+        versionName "1.0"　　　项目版本名
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {//分debug和release版本
+        release {
+            minifyEnabled false　//是否混淆代码
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'//混淆时使用的规则文件，.txt为sdk文件。pro为根目录文件
+        }
+    }
+}
+
+dependencies {//分本地依赖，库依赖和远程依赖
+    compile fileTree(dir: 'libs', include: ['*.jar'])　　//本地依赖声明
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'　　//　依赖库
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'　　//测试用例库
+}

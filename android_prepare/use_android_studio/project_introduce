@@ -1,0 +1,21 @@
+ 
+关于项目结构模式：
+默认为android
+设置为project可以看到整个完整的目录结构：
+　　　　　.gradle和.idea 为自动生成
+　　　　　app
+　　　　　build   编译时自动生成的文件，不用太关心
+　　　　　gradle   包含gradle wrapper的配置文件，使用gradle wrapper的方式不需要提前将gradle下载好，会自动根据本地缓存情况来决定是否联网下载gradle
+     .gitignore
+     build.gradle
+     gradle.properties  全局的gradle配置文件，这里配置的属性会影响项目中所有的的gradle编译脚本
+     gradlew　和gradlew.bat在命令行中执行gradle命令
+     local.properties　　指定本机android sdk路径
+     setting.gradle指定项目中引入的模块
+     
+     
+     app目录下
+     build　　为自动生成，同上
+     lib   项目使用的第三方库
+     test 测试用例
+     proguard-rules.pro  代码混淆规则
