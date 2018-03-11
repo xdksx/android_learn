@@ -92,3 +92,19 @@ normal活动：　点击按钮：onCreate onStart onResume
             
 Dialog: 同上
 见第一行代码的图非常清晰，主要记住那张图就可以了
+
+
+异常退出时为了保存数据，需要调用
+@Override 
+    protected void onSaceInstanceState(Bundle outState){
+		super.onSaceInstanceState(outState);
+		String tempData="some thing you justed typed";
+		outState.putString("data_key",tempData);
+	}
+	将数据保存起来
+	并在oncreate 中
+	   if (savedInstanceState!=null)
+        {
+			String tmp=savedInstanceState.getString("data_key");
+			Log.d(TAG,tmp);
+		}

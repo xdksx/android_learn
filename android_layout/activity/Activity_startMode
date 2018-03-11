@@ -1,0 +1,37 @@
+
+standard:重复创建实例
+测试代码
+  public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, MainActivity.class);
+
+
+
+singleTop:启动活动时若发现返回栈的栈顶是该活动则不创建，否则创建
+在AndroidMainifest中修改
+<activity android:name=".MainActivity"
+                  android:launchMode="singleTop">
+             
+ 在一个活动中:
+   Intent intent = new Intent(MainActivity.this, NormalActivity.class);
+                startActivity(intent);
+                
+  在另一个活动中：
+  Intent intent=new Intent(NormalActivity.this,MainActivity.class);
+			startActivity(intent);
+　　可以测试，在第二项时又重新创建了一个活动main
+
+
+singleTask:让整个应用程序的上下文都只存在一个实例：每一次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，发现则直接使用，并把这个活动之上的所有
+活动统统出栈
+ <activity android:name=".MainActivity"
+                  android:launchMode="singleTask">
+  还是上面的代码，会发现出栈的活动会调用onDestory()
+  
+
+singleInstance:不同程序可以共享活动实例；
+     <activity android:name=".NormalActivity"
+                  android:lanuchMode="singleInstance">
+        </activity>
+        
+        在活动２中设置为singleInstance后，启动活动１，活动１启动活动２，活动２启动活动３，后依次退出，则先退出活动３，１，２　活动３，１共用一个栈，活动
+        ２用一个栈

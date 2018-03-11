@@ -1,0 +1,64 @@
+
+1、对Activity，是如何启动的，由谁管理，由谁去执行真正的操作?等一系列的问题，需要去看底层代码，但是这里先看它的框架，涉及的几个类。
+（思考：启动一个应用程序类似于fork一个进程，在底层没有框架等限制的时候；　在底层的时候，程序从main 函数开始执行，执行到fork时创建出一个子进程，
+而安卓中的活动没有见到main，函数入口，其启动应用的方式通过点击屏幕传递一个中断到屏幕管理的活动，最后传送到系统中，之后得知要启动哪个应用，接着并开始？
+
+
+当我们点击桌面的APP图标时，Launcher进程会采用Binder的方式向AMS发出startActivity请求//这个过程中，是否是lanucher发出启动哪个进程?还是仅仅创建一个进程?先创建进程再决定执行什么代码段？
+AMS在接收到请求之后，就会通过Socket向Zygote进程发送创建进程的请求
+Zygote进程会fork出新的子进程（APP进程）
+之后APP进程会再向AMS发起一次请求，AMS收到之后经过一系列的准备工作再回传请求。
+APP进程收到AMS返回的请求后，会利用Handler向主线程发送LAUNCH_ACTIVITY消息
+主线程在收到消息之后，就创建目标Activity，并回调onCreate()/onStart()/onResume()等方法，UI渲染结束后便可以看到App主界面 
+
+
+
+
+一个是应用程序进程，另一个是AMS进程,所以实际上是两个进程，涉及到进程间通信
+１）应用程序进程
+１）首先看　　　Activity.java源码或者不看，来认识几个类：
+
+ActivityThread:其中有main函数，是应用进程的入口，每启动一个应用进程，都会创建ActivityThread与之对应的实例，是应用程序的UI线程，
+Android进程启动时会建立消息循环。负责管理应用程序的生命周期，执行系统广播及其ActivityManagerService请求执行的操作。属于客户端对象
+一个进程对应一个ActivityThread实例，这个进程里面所有的activity对应这一个ActivityThread实例
+
+ApplicationThread&ApplicatinThreadNative：
+ApplicationThread用来实现ActivityManagerService与ActivityThread之间的交互。在ActivityManagerService需要管理相关Application中的Activity的生命周期时，
+通过ApplicationThread与ActivityThread通讯，ApplicationThreadNative是ApplicationThread在客户端的实现。
+
+ApplicationThreadProxy
+
+ApplicationThreadProxy是ApplicationThread在服务器端的代理。负责和服务器端的ApplicationThreadNative通讯。
+AMS就是通过该代理与ActivityThread进行通信的。
+
+Activity&Instrumentation:
+Activity是应用程序真正做事情的类，每一个应用程序只有一个Instrumentation对象，每个Activity内都有一个对该对象的引用。
+Instrumentation可以理解为应用进程的管家，ActivityThread要创建或暂停某个Activity时，都需要通过Instrumentation。通俗的理解，
+Instrumentation与ActivityThread的区别，前者像是一个“家庭”里的“管家”，后者是负责创建这个“家庭”，并负责对外打交道，比如接收AMS的通知等
+
+  Activity1-----                         
+  Activity2-----  -Instrumentaiton   --   ActivcityThread ---ApplicationThread--- |--AMS
+  .........-----                                                                 binder
+
+
+AMS进程：
+这里说的AMS进程，实际指的是System_server进程，System_server进程起来的时候启动AMS服务，AMS实际是ActivityManagerService的缩写。
+
+ØActivityManagerService
+
+管理Activity的生命周期
+
+ØActivityManagerNative
+
+ActivityManagerService在服务器端的实现，客户端的请求调用ActivityManagerProxy后，通过IBinder，最终会在ActivityManagerNative中实现。ActivityManagerNative再通过调用ActivityManagerService的相关功能，以完成客户端请求。
+
+3.2.8(24) fork一个新的进程
+
+①AMS通过Socket通信，向Zygote发送一个创建进程请求，Zygote创建新进程。
+
+②创建好进程后，调用ActivityThread.main()。到此，我们到了新了一个进程中，也是程序的入口出。
+
+③调用ActivityThread.attach()开始新的应用程序，接着同过Binder通信通知AMS，新的进程已经创建好了，可以开始新的程序了。
+
+
+等看完binder和进程间通信等再研究

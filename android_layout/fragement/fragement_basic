@@ -1,0 +1,222 @@
+１）基本使用
+碎片和活动很像，所有也要创建对应的java文件实现和创建对应的布局文件fragment.xml
+类似：
+package org.example.myfragement1;
+
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class AnotherRightFragment extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.another_right_fragment, container, false);
+        return view;
+    }
+
+}
+
+
+package org.example.myfragement1;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+public class LeftFragment extends Fragment {
+
+     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.left_fragment, container, false);
+        return view;
+}
+}
+
+xml:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button 
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Button"/>
+        
+        </LinearLayout>
+并在activity中添加：
+   <fragment
+        android:id="@+id/left_fragment"
+        android:name="org.example.myfragement1.LeftFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+        
+        
+        
+        
+２、若要实现动态加载或改变则：
+package org.example.myfragement1;
+
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
+       // replaceFragment(new RightFragment());
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button:
+                replaceFragment(new AnotherRightFragment());
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void replaceFragment(Fragment fragment) {
+       FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.right_layout, fragment);
+       transaction.addToBackStack(null);
+      transaction.commit();
+    }
+
+}
+
+３）活动和碎片之间的通信，碎片和碎片之间的通信
+
+在活动之中取得碎片：RightFragment rightFragment=(RightFragment)getFragmentManager().findFragmentById(R.id.right_fragment);
+
+在碎片中取得活动：MainActivity activity=(MainActivity)getActivity();
+
+碎片之间：先获得活动再通过活动获得碎片
+
+４）碎片的生命周期：
+package org.example.myfragement1;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class RightFragment extends Fragment {
+
+    public static final String TAG = "RightFragment";
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.d(TAG, "onAttach");
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
+        View view = inflater.inflate(R.layout.right_fragment, container, false);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, "onActivityCreated");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "onDestroyView");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d(TAG, "onDetach");
+    }
+
+}
+
+03-11 17:37:45.609  7042  7042 D RightFragment: onAttach
+03-11 17:37:45.609  7042  7042 D RightFragment: onCreate
+03-11 17:37:45.609  7042  7042 D RightFragment: onCreateView
+03-11 17:37:45.610  7042  7042 D RightFragment: onActivityCreated
+03-11 17:37:45.610  7042  7042 D RightFragment: onStart
+03-11 17:37:45.612  7042  7042 D RightFragment: onResume
+03-11 17:37:48.358  7042  7042 D RightFragment: onPause
+03-11 17:37:48.358  7042  7042 D RightFragment: onStop
+03-11 17:37:48.358  7042  7042 D RightFragment: onDestroyView
+03-11 17:37:50.691  7042  7042 D RightFragment: onCreateView
+03-11 17:37:50.697  7042  7042 D RightFragment: onActivityCreated
+03-11 17:37:50.697  7042  7042 D RightFragment: onStart
+03-11 17:37:50.698  7042  7042 D RightFragment: onResume
+03-11 17:37:51.742  7042  7042 D RightFragment: onPause
+03-11 17:37:51.742  7042  7042 D RightFragment: onStop
+03-11 17:37:51.742  7042  7042 D RightFragment: onDestroyView
+03-11 17:37:51.743  7042  7042 D RightFragment: onDestroy
+03-11 17:37:51.743  7042  7042 D RightFragment: onDetach
+
